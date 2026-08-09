@@ -1,0 +1,233 @@
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mehmed'im | Kırık Kalem</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #f4efe7;
+            color: #29231f;
+            line-height: 1.8;
+        }
+
+        header {
+            background: #211d1a;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        header h1 {
+            font-size: 38px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #d6c7b8;
+        }
+
+        nav {
+            background: #332c27;
+            text-align: center;
+            padding: 14px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            color: #d8b98a;
+        }
+
+        .poem-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 25px;
+        }
+
+        .poem-title {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .poem-title h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .author {
+            color: #76695f;
+            font-style: italic;
+        }
+
+        .date {
+            color: #8b7c70;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .poem {
+            background: white;
+            padding: 45px;
+            margin-top: 35px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            font-size: 18px;
+        }
+
+        .stanza {
+            margin-bottom: 35px;
+        }
+
+        .stanza:last-child {
+            margin-bottom: 0;
+        }
+
+        .back-button {
+            display: block;
+            width: fit-content;
+            margin: 35px auto 0;
+            padding: 10px 20px;
+            background: #332c27;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .back-button:hover {
+            background: #57483d;
+        }
+
+        footer {
+            background: #211d1a;
+            color: #cfc3b8;
+            text-align: center;
+            padding: 25px;
+            margin-top: 70px;
+        }
+
+        @media (max-width: 600px) {
+            .poem {
+                padding: 25px;
+                font-size: 17px;
+            }
+
+            .poem-title h2 {
+                font-size: 32px;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>✍️ Kırık Kalem</h1>
+    <p>Akkuli'nin şiirleri</p>
+</header>
+
+<nav>
+    <a href="index.html">Ana Sayfa</a>
+    <a href="index.html#siirler">Şiirler</a>
+    <a href="index.html#sozler">Sözler</a>
+    <a href="index.html#kategoriler">Kategoriler</a>
+    <a href="index.html#hakkimda">Hakkımda</a>
+</nav>
+
+<main class="poem-container">
+
+    <div class="poem-title">
+
+        <h2>Mehmed'im</h2>
+
+        <p class="author">
+            Yazan: Akkuli
+        </p>
+
+        <p class="date">
+            İlk yazım tarihi: Bilinmiyor<br>
+            Arşiv tarihi: 9 Ağustos 2026
+        </p>
+
+    </div>
+
+    <div class="poem">
+
+        <div class="stanza">
+            Ey Mehmed'im! Ey Mehmed'im!<br><br>
+
+            Haydi durma, yol senindir.<br>
+            Ardına bakmadan yürü, yürü ki,<br>
+            Şu koruduğun eşsiz vatan eserindir.
+        </div>
+
+        <div class="stanza">
+            Yüce dağlarda şafak sökende,<br>
+            Ana, baba hasretiyle yanıp tütende,<br>
+            Her yiğidin sevdası saklıdır yürekte,<br>
+            Memleket aşkıyla çarpan bu yürek senindir.
+        </div>
+
+        <div class="stanza">
+            Ayak sesini duyan hainler, kaçışır inine.<br>
+            Hiçbir müsamaha gösterilmez PKK itine.<br>
+            Vururken Osmanlı tokadını yedi ceddine,<br>
+            Rabbinden gelen nice zaferler senindir.
+        </div>
+
+        <div class="stanza">
+            Bir sevda ki uğruna canlar verilmiş,<br>
+            Bir cennet ki adına vatan denilmiş.<br>
+            Unvanın Mehmetçik diye bilinmiş,<br>
+            Gururla taşıdığın bu unvan senindir.
+        </div>
+
+        <div class="stanza">
+            Büyük bir iman vermiş Yüce Rabbi,<br>
+            Yoldaştır ona Rahmet Peygamberi.<br>
+            Erlerin gönlünde yatar şehitlik mertebesi,<br>
+            Mevla'dan gelen bu şeref senindir.
+        </div>
+
+        <div class="stanza">
+            Ey Nazlı Hilal! Ey Nazlı Hilal!<br><br>
+
+            Dalgalan şanınla, mavi gökler senindir.<br>
+            Gölgenin vurduğu her yer,<br>
+            Elbette ki bizlere vatan yeridir.
+        </div>
+
+    </div>
+
+    <a href="index.html" class="back-button">
+        ← Ana Sayfaya Dön
+    </a>
+
+</main>
+
+<footer>
+    © 2026 Kırık Kalem - Akkuli
+</footer>
+
+</body>
+</html>

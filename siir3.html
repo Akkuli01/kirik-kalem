@@ -1,0 +1,231 @@
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bir Garip Aşık | Kırık Kalem</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #f4efe7;
+            color: #29231f;
+            line-height: 1.8;
+        }
+
+        header {
+            background: #211d1a;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        header h1 {
+            font-size: 38px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #d6c7b8;
+        }
+
+        nav {
+            background: #332c27;
+            text-align: center;
+            padding: 14px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            color: #d8b98a;
+        }
+
+        .poem-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 25px;
+        }
+
+        .poem-title {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .poem-title h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .author {
+            color: #76695f;
+            font-style: italic;
+        }
+
+        .date {
+            color: #8b7c70;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .poem {
+            background: white;
+            padding: 45px;
+            margin-top: 35px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            font-size: 18px;
+        }
+
+        .stanza {
+            margin-bottom: 35px;
+        }
+
+        .stanza:last-child {
+            margin-bottom: 0;
+        }
+
+        .back-button {
+            display: block;
+            width: fit-content;
+            margin: 35px auto 0;
+            padding: 10px 20px;
+            background: #332c27;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .back-button:hover {
+            background: #57483d;
+        }
+
+        footer {
+            background: #211d1a;
+            color: #cfc3b8;
+            text-align: center;
+            padding: 25px;
+            margin-top: 70px;
+        }
+
+        @media (max-width: 600px) {
+            .poem {
+                padding: 25px;
+                font-size: 17px;
+            }
+
+            .poem-title h2 {
+                font-size: 32px;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>✍️ Kırık Kalem</h1>
+    <p>Akkuli'nin şiirleri</p>
+</header>
+
+<nav>
+    <a href="index.html">Ana Sayfa</a>
+    <a href="index.html#siirler">Şiirler</a>
+    <a href="index.html#sozler">Sözler</a>
+    <a href="index.html#kategoriler">Kategoriler</a>
+    <a href="index.html#hakkimda">Hakkımda</a>
+</nav>
+
+<main class="poem-container">
+
+    <div class="poem-title">
+
+        <h2>Bir Garip Aşık</h2>
+
+        <p class="author">
+            Yazan: Akkuli
+        </p>
+
+        <p class="date">
+            İlk yazım tarihi: Bilinmiyor<br>
+            Arşiv tarihi: 9 Ağustos 2026
+        </p>
+
+    </div>
+
+    <div class="poem">
+
+        <div class="stanza">
+            Yazar kalemim aşk ile sözü,<br>
+            Gönül dayanmıyor ise kalem neylesin?<br>
+            Beklerim o yardan gelecek bir kısık sesi,<br>
+            O yar ses vermiyor ise şu can neylesin?
+        </div>
+
+        <div class="stanza">
+            Yine bahar geçti, yaşarım kışı,<br>
+            Ne olur, Mevlam bilir bu garip işi.<br>
+            Bekliyor gözü kapıda bu aciz kişi,<br>
+            Eğer ki canan gelmiyor ise yol neylesin?
+        </div>
+
+        <div class="stanza">
+            Bilmiyorum, az da olsa bu hasret diner mi?<br>
+            Yoksa bir aşk uğrunda bu can biter mi?<br>
+            Böyle ayrılığı hangi insan ister ki?<br>
+            Dermansız derde düştüm ise tabip neylesin?
+        </div>
+
+        <div class="stanza">
+            Bir garip âşığım, aşk ile yanarım,<br>
+            Aşkın şarabına kandıkça kanarım.<br>
+            Bilseler bu aşk ile nasıl yanarım,<br>
+            Şu yangınımı söndürmeyen derya neylesin...
+        </div>
+
+        <div class="stanza">
+            Sevmedim, ne yapsam da şu cihan-ı âlemi,<br>
+            Ölümden beter imiş ayrı düşenlerin hâli.<br>
+            Ahhh, ne olur gelsen yar, bir seher vakti,<br>
+            Seni bir an görmeyen gözlerim neylesin?
+        </div>
+
+        <div class="stanza">
+            Bırakmaz şu yakamı dert ile keder,<br>
+            Acımadı hâlime, etti günden güne heder.<br>
+            Hele sensizlik var ya, ölümden de beter,<br>
+            Sensiz bu canı bu garip neylesin...
+        </div>
+
+    </div>
+
+    <a href="index.html" class="back-button">
+        ← Ana Sayfaya Dön
+    </a>
+
+</main>
+
+<footer>
+    © 2026 Kırık Kalem - Akkuli
+</footer>
+
+</body>
+</html>
