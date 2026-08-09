@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bana Ulaşın | Kırık Kalem</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #f4efe7;
+            color: #29231f;
+            line-height: 1.7;
+        }
+
+        header {
+            background: #211d1a;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        header h1 {
+            font-size: 38px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #d6c7b8;
+        }
+
+        nav {
+            background: #332c27;
+            text-align: center;
+            padding: 14px 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            color: #d8b98a;
+        }
+
+        .contact-container {
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .contact-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .contact-title h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .contact-title p {
+            color: #76695f;
+            font-style: italic;
+        }
+
+        .contact-box {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d2c6b9;
+            border-radius: 6px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 16px;
+            background: #faf8f5;
+        }
+
+        textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #8a6f55;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            background: #332c27;
+            color: white;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background: #57483d;
+        }
+
+        .privacy-note {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #76695f;
+            text-align: center;
+        }
+
+        .back-button {
+            display: block;
+            width: fit-content;
+            margin: 30px auto 0;
+            padding: 10px 20px;
+            background: #332c27;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        footer {
+            background: #211d1a;
+            color: #cfc3b8;
+            text-align: center;
+            padding: 25px;
+            margin-top: 70px;
+        }
+
+        @media (max-width: 600px) {
+
+            header h1 {
+                font-size: 32px;
+            }
+
+            nav a {
+                margin: 0 5px;
+                font-size: 13px;
+            }
+
+            .contact-container {
+                margin: 40px auto;
+            }
+
+            .contact-title h2 {
+                font-size: 32px;
+            }
+
+            .contact-box {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>✍️ Kırık Kalem</h1>
+    <p>Akkuli'nin şiirleri ve sözleri</p>
+</header>
+
+<nav>
+    <a href="index.html">Ana Sayfa</a>
+    <a href="index.html#siirler">Şiirler</a>
+    <a href="index.html#sozler">Sözler</a>
+    <a href="index.html#kategoriler">Kategoriler</a>
+    <a href="index.html#hakkimda">Hakkımda</a>
+</nav>
+
+<main class="contact-container">
+
+    <div class="contact-title">
+        <h2>Bana Ulaşın</h2>
+
+        <p>
+            Düşüncelerinizi, görüşlerinizi veya mesajınızı
+            benimle paylaşabilirsiniz.
+        </p>
+    </div>
+
+    <div class="contact-box">
+
+        <!--
+        FORM BURADA OLACAK.
+
+        GitHub Pages tek başına form mesajlarını
+        e-posta olarak gönderemez.
+
+        Bir sonraki adımda ücretsiz bir form hizmetine
+        bağlayacağız.
+        -->
+
+        <form>
+
+            <div class="form-group">
+
+                <label for="name">
+                    Adınız
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Adınızı yazın"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="email">
+                    E-posta adresiniz
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="ornek@email.com"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="message">
+                    Mesajınız
+                </label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Mesajınızı buraya yazın..."
+                    required
+                ></textarea>
+
+            </div>
+
+            <button
+                type="submit"
+                class="submit-button"
+            >
+                Mesajı Gönder
+            </button>
+
+        </form>
+
+        <p class="privacy-note">
+            Gönderdiğiniz bilgiler yalnızca iletişim amacıyla kullanılacaktır.
+        </p>
+
+    </div>
+
+    <a href="index.html" class="back-button">
+        ← Ana Sayfaya Dön
+    </a>
+
+</main>
+
+<footer>
+    © 2026 Kırık Kalem - Akkuli
+</footer>
+
+</body>
+</html>
