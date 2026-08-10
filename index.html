@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Kırık Kalem | Akkuli</title>
+    <title>Kırık Kalem | Şiirler, Sözler ve Yazılar</title>
 
     <style>
         * {
@@ -30,18 +30,19 @@
             background: #211d1a;
             color: white;
             text-align: center;
-            padding: 45px 20px 35px;
+            padding: 55px 20px 45px;
         }
 
         header h1 {
-            font-size: 46px;
-            margin-bottom: 8px;
+            font-size: 48px;
+            margin-bottom: 10px;
             letter-spacing: 1px;
         }
 
         header p {
             color: #d6c7b8;
             font-size: 18px;
+            text-align: center;
         }
 
         /* MENÜ */
@@ -58,8 +59,8 @@
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 14px;
-            font-size: 16px;
+            margin: 0 12px;
+            font-size: 15px;
             transition: color 0.3s;
         }
 
@@ -67,16 +68,16 @@
             color: #d8b98a;
         }
 
-        /* ANA BÖLÜM */
+        /* ANA GİRİŞ */
 
         .hero {
             text-align: center;
-            padding: 100px 20px;
+            padding: 110px 20px;
             background: #e9dfd3;
         }
 
         .hero h2 {
-            font-size: 38px;
+            font-size: 40px;
             margin-bottom: 18px;
         }
 
@@ -84,6 +85,28 @@
             font-size: 20px;
             font-style: italic;
             color: #5c5149;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .hero-buttons {
+            margin-top: 28px;
+        }
+
+        .hero-button {
+            display: inline-block;
+            margin: 6px;
+            padding: 12px 24px;
+            background: #332c27;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            background: #57483d;
+            transform: translateY(-2px);
         }
 
         /* GENEL */
@@ -91,16 +114,16 @@
         .container {
             max-width: 1050px;
             margin: auto;
-            padding: 70px 20px;
+            padding: 75px 20px;
         }
 
         .section-title {
             text-align: center;
-            font-size: 32px;
+            font-size: 34px;
             margin-bottom: 45px;
         }
 
-        /* ŞİİR KARTLARI */
+        /* ŞİİRLER */
 
         .poems {
             display: grid;
@@ -129,7 +152,7 @@
         .category {
             color: #8a6f55;
             font-size: 14px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .poem-date {
@@ -160,9 +183,10 @@
         }
 
         .quote-card p {
-            font-size: 19px;
+            font-size: 18px;
             font-style: italic;
             color: #4e453e;
+            white-space: pre-line;
         }
 
         .quote-author {
@@ -181,18 +205,31 @@
             color: white;
             text-decoration: none;
             border-radius: 6px;
-            transition: background 0.3s;
+            transition: 0.3s;
         }
 
         .button:hover {
             background: #57483d;
         }
 
+        /* MAKALELER */
+
+        #makaleler {
+            background: #e9dfd3;
+            text-align: center;
+        }
+
+        #makaleler p {
+            max-width: 700px;
+            margin: auto;
+            color: #5c5149;
+            font-size: 18px;
+        }
+
         /* KATEGORİLER */
 
         #kategoriler {
             background: #eee5da;
-            max-width: none;
         }
 
         .category-list {
@@ -210,6 +247,11 @@
             border-radius: 10px;
             text-align: center;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s;
+        }
+
+        .category-box:hover {
+            transform: translateY(-4px);
         }
 
         .category-box h3 {
@@ -245,7 +287,7 @@
         @media (max-width: 600px) {
 
             header {
-                padding: 35px 15px 28px;
+                padding: 38px 15px 30px;
             }
 
             header h1 {
@@ -261,12 +303,13 @@
             }
 
             nav a {
-                margin: 0 5px;
+                display: inline-block;
+                margin: 4px 5px;
                 font-size: 13px;
             }
 
             .hero {
-                padding: 70px 20px;
+                padding: 75px 20px;
             }
 
             .hero h2 {
@@ -278,7 +321,7 @@
             }
 
             .container {
-                padding: 50px 18px;
+                padding: 55px 18px;
             }
 
             .section-title {
@@ -294,6 +337,12 @@
             .quote-card p {
                 font-size: 17px;
             }
+
+            .hero-button {
+                display: block;
+                max-width: 240px;
+                margin: 8px auto;
+            }
         }
     </style>
 </head>
@@ -306,7 +355,7 @@
 
         <h1>✍️ Kırık Kalem</h1>
 
-        <p>Akkuli'nin şiirleri ve sözleri</p>
+        <p>~ Bir Şair'in kaleminden kalplerde bıraktığı izler ~</p>
 
     </header>
 
@@ -321,9 +370,13 @@
 
         <a href="#sozler">Sözler</a>
 
+        <a href="makaleler.html">Makaleler</a>
+
         <a href="#kategoriler">Kategoriler</a>
 
         <a href="#hakkimda">Hakkımda</a>
+
+        <a href="iletisim.html">Bana Ulaşın</a>
 
     </nav>
 
@@ -338,6 +391,18 @@
             Bazen anlatamadıklarımızı birkaç kelime anlatır.
         </p>
 
+        <div class="hero-buttons">
+
+            <a href="#siirler" class="hero-button">
+                Şiirleri Oku
+            </a>
+
+            <a href="makaleler.html" class="hero-button">
+                Makalelere Git
+            </a>
+
+        </div>
+
     </section>
 
 
@@ -345,7 +410,9 @@
 
     <section class="container" id="siirler">
 
-        <h2 class="section-title">Şiirlerim</h2>
+        <h2 class="section-title">
+            Şiirlerim
+        </h2>
 
         <div class="poems">
 
@@ -375,62 +442,57 @@
             </div>
 
 
-            <!-- İKİNCİ ŞİİR -->
+            <!-- MEHMED'İM -->
 
-<div class="poem-card">
+            <div class="poem-card">
 
-    <h3>~ Mehmed'im ~</h3>
+                <h3>~ Mehmed'im ~</h3>
 
-    <div class="category">
-        Kategori: Vatan
-    </div>
+                <div class="category">
+                    Kategori: Vatan
+                </div>
 
-    <div class="poem-date">
-        Arşiv: 9 Ağustos 2026
-    </div>
+                <div class="poem-date">
+                    Arşiv: 9 Ağustos 2026
+                </div>
 
-    <p>
-        Vatan, Mehmetçik, fedakârlık ve
-        kahramanlık duyguları üzerine yazılmış bir şiir.
-    </p>
+                <p>
+                    Vatan, Mehmetçik, fedakârlık ve
+                    kahramanlık duyguları üzerine yazılmış bir şiir.
+                </p>
 
-    <a href="siir2.html" class="button">
-        Şiiri Oku →
-    </a>
+                <a href="siir2.html" class="button">
+                    Şiiri Oku →
+                </a>
 
-</div>
-            <!-- ÜÇÜNCÜ ŞİİR -->
+            </div>
+
+
+            <!-- BİR GARİP AŞIK -->
 
             <div class="poem-card">
 
                 <h3>~ Bir Garip Aşık ~</h3>
 
                 <div class="category">
-                    Yeni şiir
+                    Kategori: Aşk
                 </div>
 
-              <div class="poem-card">
+                <div class="poem-date">
+                    Arşiv: 9 Ağustos 2026
+                </div>
 
-    <h3>Bir Garip Aşık</h3>
+                <p>
+                    Hasret, aşk ve ayrılık üzerine
+                    yazılmış duygusal bir şiir.
+                </p>
 
-    <div class="category">
-        Kategori: Aşk
-    </div>
+                <a href="siir3.html" class="button">
+                    Şiiri Oku →
+                </a>
 
-    <div class="poem-date">
-        Arşiv: 9 Ağustos 2026
-    </div>
+            </div>
 
-    <p>
-        Hasret, aşk ve ayrılık üzerine
-        yazılmış duygusal bir şiir.
-    </p>
-
-    <a href="siir3.html" class="button">
-        Şiiri Oku →
-    </a>
-
-</div>
         </div>
 
     </section>
@@ -440,16 +502,15 @@
 
     <section class="container" id="sozler">
 
-        <h2 class="section-title">Sözlerim</h2>
+        <h2 class="section-title">
+            Sözlerim
+        </h2>
 
         <div class="quotes">
 
             <div class="quote-card">
 
-                <p>
-“Bir menzile gitmek vardı, sonu “Aşk” olan...”
-
-                </p>
+                <p>“Bir menzile gitmek vardı, sonu “Aşk” olan...”</p>
 
                 <div class="quote-author">
                     — Akkuli
@@ -461,7 +522,7 @@
             <div class="quote-card">
 
                 <p>
-                    En iyisi gitmek;
+En iyisi gitmek;
 “Yol nereye çıkar?” diye de düşünmemek.
 Kulun ne de olsa kaderi değişmez.
 Olduğu yerde de yalnızlık...
@@ -478,7 +539,7 @@ Olduğu yerde de yalnızlık...
             <div class="quote-card">
 
                 <p>
-                    “YBir varmış, bir yokmuş gibiyim.” 
+“Bir varmış, bir yokmuş gibiyim.”
 
 Geldim, gördüm, gitmeyi bekliyorum.
 Şu koca âlemde bir savaş içindeyim.
@@ -495,6 +556,29 @@ içimde ölenler hayli çok...
                 </div>
 
             </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MAKALELER -->
+
+    <section id="makaleler">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Makaleler
+            </h2>
+
+            <p>
+                Düşünceler, hayat ve kelimeler üzerine yazılar...
+            </p>
+
+            <a href="makaleler.html" class="button">
+                Makalelere Git →
+            </a>
 
         </div>
 
@@ -551,10 +635,9 @@ içimde ölenler hayli çok...
             </h2>
 
             <p>
-                Ben Akkuli.
-                Kırık Kalem, kendi yazdığım şiirleri,
-                sözleri ve kelimelerle anlatmak istediğim
-                düşünceleri paylaşacağım kişisel yazı sitemdir.
+                Kırık Kalem, şiirleri, sözleri ve
+                kelimelerle anlatılmak istenen düşünceleri
+                paylaşan kişisel bir yazı sitesidir.
             </p>
 
         </div>
@@ -566,28 +649,9 @@ içimde ölenler hayli çok...
 
     <footer>
 
-        © 2026 Kırık Kalem - Akkuli
+        © 2026 Kırık Kalem
 
-  <form action="https://formspree.io/f/xgawaayp" method="POST">
-  <label for="name">Adınız:</label>
-  <input type="text" name="name" required>
-
-  <label for="email">E-posta:</label>
-  <input type="email" name="email" required>
-
-  <label for="subject">Konu:</label>
-  <input type="text" name="subject">
-
-  <label for="phone">Telefon:</label>
-  <input type="tel" name="phone">
-
-  <label for="message">Mesajınız:</label>
-  <textarea name="message" required></textarea>
-
-  <button type="submit">Gönder</button>
-</form>
-
-
+    </footer>
 
 </body>
 </html>
