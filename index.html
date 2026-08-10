@@ -344,6 +344,56 @@
                 margin: 8px auto;
             }
         }
+
+/* ARAMA KUTUSU */
+
+.search-box {
+    background: #e9dfd3;
+    padding: 20px;
+    text-align: center;
+}
+
+.search-box input {
+    width: 300px;
+    max-width: 80%;
+    padding: 12px 15px;
+    border: 1px solid #c8b9a9;
+    border-radius: 6px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-box input:focus {
+    border-color: #8a6f55;
+}
+
+.search-box button {
+    padding: 12px 20px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 6px;
+    background: #332c27;
+    color: white;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background: #57483d;
+}
+
+@media (max-width: 600px) {
+
+    .search-box input {
+        width: 65%;
+    }
+
+    .search-box button {
+        padding: 12px 14px;
+    }
+}
     </style>
 </head>
 
@@ -380,6 +430,19 @@
 
     </nav>
 
+<!-- ARAMA KUTUSU -->
+
+<div class="search-box">
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Şiir veya söz ara..."
+    >
+
+    <button onclick="searchSite()">🔍 Ara</button>
+
+</div>
 
     <!-- ANA SAYFA -->
 
@@ -652,6 +715,40 @@ içimde ölenler hayli çok...
         © 2026 Kırık Kalem
 
     </footer>
+
+<script>
+function searchSite() {
+
+    const searchText = document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const cards = document.querySelectorAll(
+        ".poem-card, .quote-card"
+    );
+
+    if (searchText === "") {
+        cards.forEach(card => {
+            card.style.display = "";
+        });
+        return;
+    }
+
+    cards.forEach(card => {
+
+        const text = card.textContent.toLowerCase();
+
+        if (text.includes(searchText)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+}
+</script>
 
 </body>
 </html>
