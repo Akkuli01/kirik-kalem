@@ -68,6 +68,51 @@
             color: #d8b98a;
         }
 
+        /* ARAMA KUTUSU */
+
+        .search-box {
+            background: #e9dfd3;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .search-box input {
+            width: 300px;
+            max-width: 80%;
+            padding: 12px 15px;
+            border: 1px solid #c8b9a9;
+            border-radius: 6px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: #8a6f55;
+        }
+
+        .search-box button {
+            padding: 12px 20px;
+            margin-left: 5px;
+            border: none;
+            border-radius: 6px;
+            background: #332c27;
+            color: white;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .search-box button:hover {
+            background: #57483d;
+        }
+
+        #searchResult {
+            margin-top: 12px;
+            color: #76695f;
+            font-style: italic;
+        }
+
         /* ANA GİRİŞ */
 
         .hero {
@@ -343,57 +388,15 @@
                 max-width: 240px;
                 margin: 8px auto;
             }
+
+            .search-box input {
+                width: 65%;
+            }
+
+            .search-box button {
+                padding: 12px 14px;
+            }
         }
-
-/* ARAMA KUTUSU */
-
-.search-box {
-    background: #e9dfd3;
-    padding: 20px;
-    text-align: center;
-}
-
-.search-box input {
-    width: 300px;
-    max-width: 80%;
-    padding: 12px 15px;
-    border: 1px solid #c8b9a9;
-    border-radius: 6px;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 16px;
-    outline: none;
-}
-
-.search-box input:focus {
-    border-color: #8a6f55;
-}
-
-.search-box button {
-    padding: 12px 20px;
-    margin-left: 5px;
-    border: none;
-    border-radius: 6px;
-    background: #332c27;
-    color: white;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.search-box button:hover {
-    background: #57483d;
-}
-
-@media (max-width: 600px) {
-
-    .search-box input {
-        width: 65%;
-    }
-
-    .search-box button {
-        padding: 12px 14px;
-    }
-}
     </style>
 </head>
 
@@ -430,19 +433,25 @@
 
     </nav>
 
-<!-- ARAMA KUTUSU -->
 
-<div class="search-box">
+    <!-- ARAMA KUTUSU -->
 
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="Şiir veya söz ara..."
-    >
+    <div class="search-box">
 
-    <button onclick="searchSite()">🔍 Ara</button>
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Şiir veya söz ara..."
+        >
 
-</div>
+        <button onclick="searchSite()">
+            🔍 Ara
+        </button>
+
+        <p id="searchResult"></p>
+
+    </div>
+
 
     <!-- ANA SAYFA -->
 
@@ -479,8 +488,6 @@
 
         <div class="poems">
 
-            <!-- CAN ALİ -->
-
             <div class="poem-card">
 
                 <h3>~ Can Ali ~</h3>
@@ -505,8 +512,6 @@
             </div>
 
 
-            <!-- MEHMED'İM -->
-
             <div class="poem-card">
 
                 <h3>~ Mehmed'im ~</h3>
@@ -530,8 +535,6 @@
 
             </div>
 
-
-            <!-- BİR GARİP AŞIK -->
 
             <div class="poem-card">
 
@@ -716,39 +719,100 @@ içimde ölenler hayli çok...
 
     </footer>
 
-<script>
-function searchSite() {
 
-    const searchText = document
-        .getElementById("searchInput")
-        .value
-        .toLowerCase()
-        .trim();
+    <!-- ARAMA SİSTEMİ -->
 
-    const cards = document.querySelectorAll(
-        ".poem-card, .quote-card"
-    );
+    <script>
 
-    if (searchText === "") {
-        cards.forEach(card => {
-            card.style.display = "";
-        });
-        return;
-    }
+        function normalizeText(text) {
 
-    cards.forEach(card => {
+            return text
+                .toLowerCase()
+                .replace(/['’]/g, "")
+                .replace(/ı/g, "i")
+                .replace(/ğ/g, "g")
+                .replace(/ü/g, "u")
+                .replace(/ş/g, "s")
+                .replace(/ö/g, "o")
+                .replace(/ç/g, "c");
 
-        const text = card.textContent.toLowerCase();
-
-        if (text.includes(searchText)) {
-            card.style.display = "";
-        } else {
-            card.style.display = "none";
         }
 
-    });
-}
-</script>
+
+        function searchSite() {
+
+            const input =
+                document.getElementById("searchInput");
+
+            const searchText =
+                normalizeText(input.value.trim());
+
+            const cards =
+                document.querySelectorAll(
+                    ".poem-card, .quote-card"
+                );
+
+            const result =
+                document.getElementById("searchResult");
+
+            let resultCount = 0;
+
+
+            cards.forEach(function(card) {
+
+                const text =
+                    normalizeText(card.textContent);
+
+                if (
+                    searchText === "" ||
+                    text.includes(searchText)
+                ) {
+
+                    card.style.display = "";
+
+                    resultCount++;
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+
+            if (searchText === "") {
+
+                result.textContent = "";
+
+            } else if (resultCount === 0) {
+
+                result.textContent =
+                    "Aradığınız kelimeyle eşleşen şiir veya söz bulunamadı.";
+
+            } else {
+
+                result.textContent =
+                    resultCount + " sonuç bulundu.";
+
+            }
+
+        }
+
+
+        document
+            .getElementById("searchInput")
+            .addEventListener("keydown", function(event) {
+
+                if (event.key === "Enter") {
+
+                    searchSite();
+
+                }
+
+            });
+
+    </script>
 
 </body>
 </html>
