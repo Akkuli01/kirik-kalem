@@ -1,416 +1,452 @@
+```html
 <!-- SUPABASE -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-    const SUPABASE_URL =
-        "https://idaxxculusfumyknwgid.supabase.co";
+const SUPABASE_URL =
+    "https://idaxxculusfumyknwgid.supabase.co";
 
-    const SUPABASE_PUBLISHABLE_KEY =
-        "sb_publishable_mSQ2DEn9KsMcdPDVq9FpDA_SsnPoF_d";
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_mSQ2DEn9KsMcdPDVq9FpDA_SsnPoF_d";
 
-    const supabaseClient =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_PUBLISHABLE_KEY
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+/* BU ŞİİRİN ID'Sİ */
+
+const poemId = "can-ali";
+
+
+/* YASAKLI İÇERİKLER */
+
+const bannedWords = [
+    "mal",
+    "amk",
+    "aq",
+    "orospu",
+    "piç",
+    "siktir",
+    "sikik",
+    "yarrak",
+    "ibne",
+    "göt",
+    "salak",
+    "aptal",
+    "gerizekalı",
+    "şerefsiz",
+    "haysiyetsiz",
+    "oe",
+    "orospu çocuğu"
+];
+
+
+/* METNİ NORMALLEŞTİR */
+
+function normalizeText(text) {
+
+    return text
+        .toLocaleLowerCase("tr-TR")
+        .replace(/[^a-zçğıöşü0-9\s]/gi, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+}
+
+
+/* YASAKLI İÇERİK KONTROLÜ */
+
+function containsBannedContent(text) {
+
+    const normalized = normalizeText(text);
+
+    const words = normalized.split(" ");
+
+    return bannedWords.some(function(word) {
+
+        return words.includes(
+            normalizeText(word)
         );
 
+    });
 
-    /* BU ŞİİRİN ID'Sİ */
-
-    const poemId = "can-ali";
-
-
-    /* YASAKLI İÇERİKLER */
-
-    const bannedWords = [
-        "mal",
-        "amk",
-        "aq",
-        "orospu",
-        "piç",
-        "siktir",
-        "sikik",
-        "yarrak",
-        "ibne",
-        "göt",
-        "salak",
-        "aptal",
-        "gerizekalı",
-        "şerefsiz",
-        "haysiyetsiz",
-        "oe",
-        "orospu çocuğu"
-    ];
+}
 
 
-    function normalizeText(text) {
+/* =========================
+   YORUMLARI GETİR
+========================= */
 
-        return text
-            .toLocaleLowerCase("tr-TR")
-            .replace(/[^a-zçğıöşü0-9\s]/gi, " ")
-            .replace(/\s+/g, " ")
-            .trim();
+async function loadComments() {
 
-    }
+    const commentsList =
+        document.getElementById("commentsList");
+
+    if (!commentsList) return;
 
 
-    function containsBannedContent(text) {
-
-        const normalized = normalizeText(text);
-
-        const words = normalized.split(" ");
-
-        return bannedWords.some(function(word) {
-
-            return words.includes(
-                normalizeText(word)
+    const result =
+        await supabaseClient
+            .from("comments")
+            .select(
+                "author_name, content, created_at"
+            )
+            .eq("poem_id", poemId)
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
             );
 
-        });
+
+    if (result.error) {
+
+        console.error(
+            "Supabase yorum hatası:",
+            result.error
+        );
+
+        commentsList.innerHTML =
+            "<p>Yorumlar yüklenirken bir hata oluştu.</p>" +
+            "<p style='color:red; font-size:14px;'>" +
+            result.error.message +
+            "</p>";
+
+        return;
 
     }
 
 
-    /* YORUMLARI GETİR */
+    const data = result.data;
 
-    async function loadComments() {
 
-        const commentsList =
-            document.getElementById("commentsList");
+    if (!data || data.length === 0) {
 
-        const result =
-            await supabaseClient
-                .from("comments")
-                .select(
-                    "author_name, content, created_at"
-                )
-                .eq("poem_id", poemId)
-                .order(
-                    "created_at",
-                    {
-                        ascending: false
-                    }
+        commentsList.innerHTML =
+            "<p>Henüz yorum yapılmamış. İlk yorumu sen yap! ✍️</p>";
+
+        return;
+
+    }
+
+
+    commentsList.innerHTML = "";
+
+
+    data.forEach(function(comment) {
+
+        const commentElement =
+            document.createElement("div");
+
+        commentElement.className = "comment";
+
+
+        const author =
+            document.createElement("div");
+
+        author.className = "comment-author";
+
+        author.textContent =
+            comment.author_name;
+
+
+        const date =
+            document.createElement("div");
+
+        date.className = "comment-date";
+
+        date.textContent =
+            new Date(
+                comment.created_at
+            ).toLocaleString("tr-TR");
+
+
+        const text =
+            document.createElement("div");
+
+        text.className = "comment-text";
+
+        text.textContent =
+            comment.content;
+
+
+        commentElement.appendChild(author);
+        commentElement.appendChild(date);
+        commentElement.appendChild(text);
+
+        commentsList.appendChild(
+            commentElement
+        );
+
+    });
+
+}
+
+
+/* =========================
+   YORUM GÖNDER
+========================= */
+
+const commentForm =
+    document.getElementById("commentForm");
+
+
+if (commentForm) {
+
+    commentForm.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const authorName =
+                document
+                    .getElementById("authorName")
+                    .value
+                    .trim();
+
+
+            const commentText =
+                document
+                    .getElementById("commentText")
+                    .value
+                    .trim();
+
+
+            const message =
+                document.getElementById(
+                    "commentMessage"
                 );
 
 
-        if (result.error) {
+            message.textContent = "";
 
-            console.error(
-                "Supabase yorum hatası:",
-                result.error
-            );
 
-            commentsList.innerHTML =
-                "<p>Yorumlar yüklenirken bir hata oluştu.</p>" +
-                "<p style='color:red; font-size:14px;'>" +
-                result.error.message +
-                "</p>";
-
-            return;
-
-        }
-
-
-        const data = result.data;
-
-
-        if (!data || data.length === 0) {
-
-            commentsList.innerHTML =
-                "<p>Henüz yorum yapılmamış. İlk yorumu sen yap! ✍️</p>";
-
-            return;
-
-        }
-
-
-        commentsList.innerHTML = "";
-
-
-        data.forEach(function(comment) {
-
-            const commentElement =
-                document.createElement("div");
-
-            commentElement.className =
-                "comment";
-
-
-            const author =
-                document.createElement("div");
-
-            author.className =
-                "comment-author";
-
-            author.textContent =
-                comment.author_name;
-
-
-            const date =
-                document.createElement("div");
-
-            date.className =
-                "comment-date";
-
-            date.textContent =
-                new Date(
-                    comment.created_at
-                ).toLocaleString("tr-TR");
-
-
-            const text =
-                document.createElement("div");
-
-            text.className =
-                "comment-text";
-
-            text.textContent =
-                comment.content;
-
-
-            commentElement.appendChild(author);
-            commentElement.appendChild(date);
-            commentElement.appendChild(text);
-
-            commentsList.appendChild(
-                commentElement
-            );
-
-        });
-
-    }
-
-
-    /* YORUM GÖNDER */
-
-    document
-        .getElementById("commentForm")
-        .addEventListener(
-            "submit",
-            async function(event) {
-
-                event.preventDefault();
-
-
-                const authorName =
-                    document
-                        .getElementById("authorName")
-                        .value
-                        .trim();
-
-
-                const commentText =
-                    document
-                        .getElementById("commentText")
-                        .value
-                        .trim();
-
-
-                const message =
-                    document.getElementById(
-                        "commentMessage"
-                    );
-
-
-                message.textContent = "";
-
-
-                if (
-                    !authorName ||
-                    !commentText
-                ) {
-
-                    message.textContent =
-                        "Lütfen adınızı ve yorumunuzu yazın.";
-
-                    return;
-
-                }
-
-
-                if (
-                    containsBannedContent(authorName) ||
-                    containsBannedContent(commentText)
-                ) {
-
-                    message.textContent =
-                        "Yorumunuz topluluk kurallarımıza uygun değil. Küfür, hakaret, aşırı argo, siyasi içerik veya dinî değerlere yönelik aşağılayıcı ifadeler kullanılamaz.";
-
-                    return;
-
-                }
-
-
-                const result =
-                    await supabaseClient
-                        .from("comments")
-                        .insert({
-
-                            author_name:
-                                authorName,
-
-                            content:
-                                commentText,
-
-                            poem_id:
-                                poemId
-
-                        });
-
-
-                if (result.error) {
-
-                    console.error(
-                        "Yorum gönderme hatası:",
-                        result.error
-                    );
-
-                    message.textContent =
-                        "Yorum gönderilemedi. Lütfen tekrar deneyin.";
-
-                    return;
-
-                }
-
+            if (
+                !authorName ||
+                !commentText
+            ) {
 
                 message.textContent =
-                    "Yorumunuz yayınlandı! ❤️";
+                    "Lütfen adınızı ve yorumunuzu yazın.";
 
-
-                document
-                    .getElementById(
-                        "commentForm"
-                    )
-                    .reset();
-
-
-                loadComments();
+                return;
 
             }
-        );
 
 
-    /* BEĞENİLERİ GETİR */
+            /* YASAKLI İÇERİK */
 
-    async function loadLikes() {
+            if (
+                containsBannedContent(authorName) ||
+                containsBannedContent(commentText)
+            ) {
 
-        const likeCount =
-            document.getElementById("likeCount");
+                message.textContent =
+                    "Yorumunuz topluluk kurallarımıza uygun değil. Küfür, hakaret, aşırı argo, siyasi içerik veya dinî değerlere yönelik aşağılayıcı ifadeler kullanılamaz.";
+
+                return;
+
+            }
 
 
-        const result =
-            await supabaseClient
-                .from("likes")
-                .select(
-                    "id",
-                    {
-                        count: "exact",
-                        head: true
-                    }
-                )
-                .eq(
-                    "poem_id",
-                    poemId
+            /* SUPABASE'E KAYDET */
+
+            const result =
+                await supabaseClient
+                    .from("comments")
+                    .insert({
+
+                        author_name:
+                            authorName,
+
+                        content:
+                            commentText,
+
+                        poem_id:
+                            poemId
+
+                    });
+
+
+            if (result.error) {
+
+                console.error(
+                    "Yorum gönderme hatası:",
+                    result.error
                 );
 
+                message.textContent =
+                    "Yorum gönderilemedi. Lütfen tekrar deneyin.";
 
-        if (result.error) {
+                return;
 
-            console.error(
-                "Beğeni yükleme hatası:",
-                result.error
-            );
+            }
 
-            likeCount.textContent = "0";
 
-            return;
+            message.textContent =
+                "Yorumunuz yayınlandı! ❤️";
+
+
+            commentForm.reset();
+
+
+            await loadComments();
 
         }
+    );
+
+}
 
 
-        likeCount.textContent =
-            result.count || 0;
+/* =========================
+   BEĞENİLERİ GETİR
+========================= */
+
+async function loadLikes() {
+
+    const likeCount =
+        document.getElementById("likeCount");
+
+
+    /* Beğeni bölümü henüz HTML'de yoksa hata verme */
+
+    if (!likeCount) return;
+
+
+    const result =
+        await supabaseClient
+            .from("likes")
+            .select(
+                "id",
+                {
+                    count: "exact",
+                    head: true
+                }
+            )
+            .eq(
+                "poem_id",
+                poemId
+            );
+
+
+    if (result.error) {
+
+        console.error(
+            "Beğeni yükleme hatası:",
+            result.error
+        );
+
+        likeCount.textContent = "0";
+
+        return;
 
     }
 
 
-    /* BEĞENİ GÖNDER */
+    likeCount.textContent =
+        result.count || 0;
 
-    document
-        .getElementById("likeButton")
-        .addEventListener(
-            "click",
-            async function() {
-
-                const button =
-                    document.getElementById(
-                        "likeButton"
-                    );
-
-                const message =
-                    document.getElementById(
-                        "likeMessage"
-                    );
+}
 
 
-                button.disabled = true;
+/* =========================
+   BEĞENİ GÖNDER
+========================= */
+
+const likeButton =
+    document.getElementById("likeButton");
 
 
-                const result =
-                    await supabaseClient
-                        .from("likes")
-                        .insert({
+if (likeButton) {
 
-                            poem_id:
-                                poemId
+    likeButton.addEventListener(
+        "click",
+        async function() {
 
-                        });
+            const message =
+                document.getElementById(
+                    "likeMessage"
+                );
 
 
-                if (result.error) {
+            likeButton.disabled = true;
 
-                    console.error(
-                        "Beğeni gönderme hatası:",
-                        result.error
-                    );
+
+            const result =
+                await supabaseClient
+                    .from("likes")
+                    .insert({
+
+                        poem_id:
+                            poemId
+
+                    });
+
+
+            if (result.error) {
+
+                console.error(
+                    "Beğeni gönderme hatası:",
+                    result.error
+                );
+
+                if (message) {
 
                     message.textContent =
                         "Beğeni gönderilemedi.";
 
-                    button.disabled = false;
-
-                    return;
-
                 }
 
+                likeButton.disabled = false;
 
-                button.classList.add("liked");
+                return;
+
+            }
+
+
+            likeButton.classList.add("liked");
+
+
+            if (message) {
 
                 message.textContent =
                     "Beğendiğin için teşekkürler! ❤️";
 
-                await loadLikes();
-
-
-                setTimeout(
-                    function() {
-
-                        button.disabled = false;
-
-                    },
-                    1000
-                );
-
             }
-        );
 
 
-    /* SAYFA AÇILINCA */
+            await loadLikes();
 
-    loadComments();
-    loadLikes();
+
+            setTimeout(
+                function() {
+
+                    likeButton.disabled = false;
+
+                },
+                1000
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   SAYFA AÇILINCA
+========================= */
+
+loadComments();
+loadLikes();
 
 </script>
 ```
