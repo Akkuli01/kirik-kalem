@@ -1,12 +1,16 @@
+```html
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Can Ali | Kırık Kalem</title>
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -97,6 +101,78 @@
             margin-bottom: 0;
         }
 
+        /* YORUMLAR */
+
+        .comments-section {
+            max-width: 800px;
+            margin: 40px auto 0;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .comments-section h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        #commentForm input,
+        #commentForm textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #d6cec5;
+            border-radius: 6px;
+            font-family: Georgia, serif;
+            font-size: 16px;
+        }
+
+        #commentForm textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        #commentForm button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #332c27;
+            color: white;
+            cursor: pointer;
+            font-family: Georgia, serif;
+            font-size: 16px;
+        }
+
+        #commentForm button:hover {
+            background: #57483d;
+        }
+
+        .comment {
+            border-top: 1px solid #e5ddd5;
+            padding: 20px 0;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .comment-date {
+            color: #8b7c70;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .comment-text {
+            white-space: pre-wrap;
+        }
+
+        #commentMessage {
+            margin: 15px 0;
+            font-size: 15px;
+        }
+
         .back-button {
             display: block;
             width: fit-content;
@@ -121,6 +197,7 @@
         }
 
         @media (max-width: 600px) {
+
             .poem {
                 padding: 25px;
                 font-size: 17px;
@@ -129,95 +206,498 @@
             .poem-title h2 {
                 font-size: 32px;
             }
+
+            .comments-section {
+                margin-left: 15px;
+                margin-right: 15px;
+                padding: 20px;
+            }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
 <header>
+
     <h1>✍️ Kırık Kalem</h1>
-    <p>Akkuli'nin şiirleri</p>
+
+    <p>Akkuli'nin şiirleri ve sözleri</p>
+
 </header>
 
+
 <nav>
+
     <a href="index.html">Ana Sayfa</a>
-    <a href="index.html#siirler">Şiirler</a>
-    <a href="index.html#hakkimda">Hakkımda</a>
+    <a href="siir1.html">Şiirler</a>
+
 </nav>
 
-<main class="poem-container">
 
-    <div class="poem-title">
+<main>
 
-        <h2>Can Ali</h2>
+    <div class="poem-container">
 
-        <p class="author">
-            Yazan: Akkuli 🖋️
-        </p>
 
-        <p class="date">
-            İlk yazım tarihi: Bilinmiyor<br>
-            Arşiv tarihi: 9 Ağustos 2026
-        </p>
+        <div class="poem-title">
+
+            <h2>Can Ali</h2>
+
+            <p class="author">
+                Yazan: Akkuli 🖋️
+            </p>
+
+            <p class="date">
+                İlk yazım tarihi: Bilinmiyor<br>
+                Arşiv tarihi: 9 Ağustos 2026
+            </p>
+
+        </div>
+
+
+        <div class="poem">
+
+            <div class="stanza">
+
+                Bilmiyorum anlatmaya mısralar yeter mi?<br>
+                Hangi lisan ile anlatayım söyle bana Ey Ali!<br>
+                Şu fani alem de sorsalar bu acize ah bir seni<br>
+                Dost'tan öte kardeş oldun bu kul'a Sen Ali!
+
+            </div>
+
+
+            <div class="stanza">
+
+                Yaşımız yedi veya sekiz, iki yabancı gibiydik okulda<br>
+                Ne ben sana yakın durdum ne de sen bana uzakta<br>
+                Şimdi dost denilince gönül ısınmıyor senden başkasına<br>
+                Şu garip gönlümde yerin bir başka Dost Ali!
+
+            </div>
+
+
+            <div class="stanza">
+
+                Sevda neden'dir bilmem bir kez güldürmedi yüzümüzü<br>
+                Ne çok paylaşırdık bir araya gelince bir birimizle derdimizi<br>
+                Rabbim biliyor hiç olmazsa şu garip gönlümüzü<br>
+                Lüzum yok başkasına sen ol yeter ki Yar Ali!
+
+            </div>
+
+
+            <div class="stanza">
+
+                Kimimiz hayat'a erken atıldı koşuşturdu aynı sen gibi<br>
+                Kimimiz can telaşıyla oradan oraya savruldu aynı ben gibi<br>
+                Şöyle bakıyorum da olmamış henüz bu savaşın galibi<br>
+                Olurda bir gün pes edersem sen pes etme Er Ali!
+
+            </div>
+
+
+            <div class="stanza">
+
+                Dünya bu yaaa sende çekmişsindir az da olsa kahrını<br>
+                Bilirim yine de kırmazsın kimsenin gönül hatrını<br>
+                Sen dua et her zorlukta Rabbim verir sabrını<br>
+                O'ndan başkasına gerek var mı kul Ali!
+
+            </div>
+
+
+            <div class="stanza">
+
+                Olur da bir gün yolumuz düşerse ayrılığa<br>
+                Sağ elini ne olur götür kalbin üstüne<br>
+                İşte bulacaksın inanıyorum ki beni orada<br>
+                Vallahi sen her zaman kalbimdesin Can Ali!
+
+            </div>
+
+        </div>
+
+
+        <!-- YORUM BÖLÜMÜ -->
+
+        <div class="comments-section">
+
+            <h3>💬 Yorumlar</h3>
+
+
+            <form id="commentForm">
+
+                <input
+                    type="text"
+                    id="authorName"
+                    placeholder="Adınız veya rumuzunuz"
+                    maxlength="50"
+                    required
+                >
+
+
+                <textarea
+                    id="commentText"
+                    placeholder="Yorumunuzu yazın..."
+                    maxlength="500"
+                    required
+                ></textarea>
+
+
+                <button type="submit">
+                    Yorum Gönder
+                </button>
+
+            </form>
+
+
+            <div id="commentMessage"></div>
+
+
+            <div id="commentsList">
+
+                <p>Yorumlar yükleniyor...</p>
+
+            </div>
+
+        </div>
+
+
+        <a href="index.html" class="back-button">
+            ← Ana Sayfaya Dön
+        </a>
+
 
     </div>
-
-    <div class="poem">
-
-        <div class="stanza">
-            Bilmiyorum anlatmaya mısralar yeter mi?<br>
-            Hangi lisan ile anlatayım söyle bana Ey Ali!<br>
-            Şu fani alem de sorsalar bu acize ah bir seni<br>
-            Dost'tan öte kardeş oldun bu kul'a Sen Ali!
-        </div>
-
-        <div class="stanza">
-            Yaşımız yedi veya sekiz, iki yabancı gibiydik okulda<br>
-            Ne ben sana yakın durdum ne de sen bana uzakta<br>
-            Şimdi dost denilince gönül ısınmıyor senden başkasına<br>
-            Şu garip gönlümde yerin bir başka Dost Ali!
-        </div>
-
-        <div class="stanza">
-            Sevda neden'dir bilmem bir kez güldürmedi yüzümüzü<br>
-            Ne çok paylaşırdık bir araya gelince bir birimizle derdimizi<br>
-            Rabbim biliyor hiç olmazsa şu garip gönlümüzü<br>
-            Lüzum yok başkasına sen ol yeter ki Yar Ali!
-        </div>
-
-        <div class="stanza">
-            Kimimiz hayat'a erken atıldı koşuşturdu aynı sen gibi<br>
-            Kimimiz can telaşıyla oradan oraya savruldu aynı ben gibi<br>
-            Şöyle bakıyorum da olmamış henüz bu savaşın galibi<br>
-            Olurda bir gün pes edersem sen pes etme Er Ali!
-        </div>
-
-        <div class="stanza">
-            Dünya bu yaaa sende çekmişsindir az da olsa kahrını<br>
-            Bilirim yine de kırmazsın kimsenin gönül hatrını<br>
-            Sen dua et her zorlukta Rabbim verir sabrını<br>
-            O'ndan başkasına gerek var mı kul Ali!
-        </div>
-
-        <div class="stanza">
-            Olur da bir gün yolumuz düşerse ayrılığa<br>
-            Sağ elini ne olur götür kalbin üstüne<br>
-            İşte bulacaksın inanıyorum ki beni orada<br>
-            Vallahi sen her zaman kalbimdesin Can Ali!
-        </div>
-
-    </div>
-
-    <a href="index.html" class="back-button">
-        ← Ana Sayfaya Dön
-    </a>
 
 </main>
 
+
 <footer>
+
     © 2026 Kırık Kalem - Akkuli
+
 </footer>
 
+
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+    const SUPABASE_URL =
+        "https://idaxxculusfumyknwgid.supabase.co";
+
+
+    const SUPABASE_PUBLISHABLE_KEY =
+        "sb_publishable_mSQ2DEn9KsMcdPDVq9FpDA_SsnPoF_d";
+
+
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_PUBLISHABLE_KEY
+        );
+
+
+    /* BU ŞİİRİN ID'Sİ */
+
+    const poemId = "can-ali";
+
+
+    /* YASAKLI İÇERİKLER */
+
+    const bannedWords = [
+
+        "mal",
+        "amk",
+        "aq",
+        "orospu",
+        "piç",
+        "siktir",
+        "sikik",
+        "yarrak",
+        "ibne",
+        "göt",
+        "salak",
+        "aptal",
+        "gerizekalı",
+        "şerefsiz",
+        "haysiyetsiz",
+        "oe",
+        "orospu çocuğu",
+
+    ];
+
+
+    function normalizeText(text) {
+
+        return text
+            .toLocaleLowerCase("tr-TR")
+            .replace(/[^a-zçğıöşü0-9\s]/gi, " ")
+            .replace(/\s+/g, " ")
+            .trim();
+
+    }
+
+
+    function containsBannedContent(text) {
+
+        const normalized =
+            normalizeText(text);
+
+        const words =
+            normalized.split(" ");
+
+
+        return bannedWords.some(function(word) {
+
+            return words.includes(word);
+
+        });
+
+    }
+
+
+    /* YORUMLARI GETİR */
+
+    async function loadComments() {
+
+        const commentsList =
+            document.getElementById("commentsList");
+
+
+        const result =
+            await supabaseClient
+                .from("comments")
+                .select(
+                    "author_name, comment, created_at"
+                )
+                .eq("poem_id", poemId)
+                .order(
+                    "created_at",
+                    {
+                        ascending: false
+                    }
+                );
+
+if (result.error) {
+
+    console.error("Supabase yorum hatası:", result.error);
+
+    commentsList.innerHTML =
+        "<p>Yorumlar yüklenirken bir hata oluştu.</p>" +
+        "<p style='color:red; font-size:14px;'>" +
+        result.error.message +
+        "</p>";
+
+    return;
+
+}
+        const data = result.data;
+
+
+        if (!data || data.length === 0) {
+
+            commentsList.innerHTML =
+                "<p>Henüz yorum yapılmamış. İlk yorumu sen yap! ✍️</p>";
+
+            return;
+
+        }
+
+
+        commentsList.innerHTML = "";
+
+
+        data.forEach(function(comment) {
+
+            const commentElement =
+                document.createElement("div");
+
+            commentElement.className =
+                "comment";
+
+
+            const author =
+                document.createElement("div");
+
+            author.className =
+                "comment-author";
+
+            author.textContent =
+                comment.author_name;
+
+
+            const date =
+                document.createElement("div");
+
+            date.className =
+                "comment-date";
+
+            date.textContent =
+                new Date(
+                    comment.created_at
+                ).toLocaleString("tr-TR");
+
+
+            const text =
+                document.createElement("div");
+
+            text.className =
+                "comment-text";
+
+            text.textContent =
+                comment.comment;
+
+
+            commentElement.appendChild(author);
+            commentElement.appendChild(date);
+            commentElement.appendChild(text);
+
+
+            commentsList.appendChild(
+                commentElement
+            );
+
+        });
+
+    }
+
+
+    /* YORUM GÖNDER */
+
+    document
+        .getElementById("commentForm")
+        .addEventListener(
+            "submit",
+            async function(event) {
+
+                event.preventDefault();
+
+
+                const authorName =
+                    document
+                        .getElementById("authorName")
+                        .value
+                        .trim();
+
+
+                const commentText =
+                    document
+                        .getElementById("commentText")
+                        .value
+                        .trim();
+
+
+                const message =
+                    document.getElementById(
+                        "commentMessage"
+                    );
+
+
+                message.textContent = "";
+
+
+                if (
+                    !authorName ||
+                    !commentText
+                ) {
+
+                    message.textContent =
+                        "Lütfen adınızı ve yorumunuzu yazın.";
+
+                    return;
+
+                }
+
+
+                /* YASAKLI İÇERİK KONTROLÜ */
+
+                if (
+                    containsBannedContent(
+                        authorName
+                    ) ||
+                    containsBannedContent(
+                        commentText
+                    )
+                ) {
+
+                    message.textContent =
+                        "Yorumunuz topluluk kurallarımıza uygun değil. Küfür, hakaret, aşırı argo, siyasi içerik veya dinî değerlere yönelik aşağılayıcı ifadeler kullanılamaz.";
+
+                    return;
+
+                }
+
+
+                /* SUPABASE'E KAYDET */
+
+                const result =
+                    await supabaseClient
+                        .from("comments")
+                        .insert({
+
+                            author_name:
+                                authorName,
+
+                            comment:
+                                commentText,
+
+                            poem_id:
+                                poemId
+
+                        });
+
+
+                if (result.error) {
+
+                    console.error(
+                        result.error
+                    );
+
+                    message.textContent =
+                        "Yorum gönderilemedi. Lütfen tekrar deneyin.";
+
+                    return;
+
+                }
+
+
+                message.textContent =
+                    "Yorumunuz yayınlandı! ❤️";
+
+
+                document
+                    .getElementById(
+                        "commentForm"
+                    )
+                    .reset();
+
+
+                loadComments();
+
+            }
+        );
+
+
+    /* SAYFA AÇILINCA */
+
+    loadComments();
+
+</script>
+
+
 </body>
+
 </html>
+```
