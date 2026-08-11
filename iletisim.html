@@ -10,10 +10,6 @@
 
     <style>
 
-        /* =========================
-           TEMEL
-        ========================= */
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -27,11 +23,6 @@
             line-height: 1.8;
             transition: background 0.3s, color 0.3s;
         }
-
-
-        /* =========================
-           HEADER
-        ========================= */
 
         header {
             background: #211d1a;
@@ -48,11 +39,6 @@
         header p {
             color: #d6c7b8;
         }
-
-
-        /* =========================
-           MENÜ
-        ========================= */
 
         nav {
             background: #332c27;
@@ -75,10 +61,7 @@
             color: #d8b98a;
         }
 
-
-        /* =========================
-           TEMA BUTONU
-        ========================= */
+        /* TEMA BUTONU */
 
         #themeButton {
             position: fixed;
@@ -102,10 +85,7 @@
             transform: scale(1.08);
         }
 
-
-        /* =========================
-           İLETİŞİM
-        ========================= */
+        /* İLETİŞİM */
 
         .contact-container {
             max-width: 800px;
@@ -131,8 +111,8 @@
             background: white;
             padding: 45px;
             border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: background 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s;
         }
 
         .contact-box h3 {
@@ -145,10 +125,7 @@
             color: #5f554e;
         }
 
-
-        /* =========================
-           FORM
-        ========================= */
+        /* FORM */
 
         .form-group {
             margin-bottom: 18px;
@@ -168,11 +145,9 @@
             border-radius: 6px;
             font-family: Georgia, "Times New Roman", serif;
             font-size: 16px;
-            background: #fff;
+            background: white;
             color: #29231f;
-            transition: background 0.3s,
-                        color 0.3s,
-                        border 0.3s;
+            transition: background 0.3s, color 0.3s, border 0.3s;
         }
 
         .form-group textarea {
@@ -186,10 +161,7 @@
             border-color: #8a6f55;
         }
 
-
-        /* =========================
-           GÖNDER BUTONU
-        ========================= */
+        /* GÖNDER BUTONU */
 
         .submit-button {
             padding: 12px 24px;
@@ -215,19 +187,17 @@
         #formMessage {
             margin-top: 18px;
             font-size: 15px;
+            min-height: 24px;
         }
 
-
-        /* =========================
-           BİLGİ KUTUSU
-        ========================= */
+        /* BİLGİ KUTUSU */
 
         .info-box {
             margin-top: 30px;
             padding: 20px;
             background: #f4efe7;
             border-radius: 8px;
-            transition: background 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
 
         .info-box h3 {
@@ -235,10 +205,7 @@
             margin-bottom: 8px;
         }
 
-
-        /* =========================
-           GERİ DÖN
-        ========================= */
+        /* GERİ DÖN */
 
         .back-button {
             display: block;
@@ -249,16 +216,14 @@
             color: white;
             text-decoration: none;
             border-radius: 6px;
+            transition: background 0.3s;
         }
 
         .back-button:hover {
             background: #57483d;
         }
 
-
-        /* =========================
-           FOOTER
-        ========================= */
+        /* FOOTER */
 
         footer {
             background: #211d1a;
@@ -268,10 +233,7 @@
             margin-top: 70px;
         }
 
-
-        /* =========================
-           KARANLIK MOD
-        ========================= */
+        /* KARANLIK MOD */
 
         body.dark-mode {
             background: #171513;
@@ -283,8 +245,9 @@
         }
 
         body.dark-mode .contact-box {
-            background: #24211e;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.35);
+            background: #25211e;
+            color: #e8e1d9;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.35);
         }
 
         body.dark-mode .contact-box > p {
@@ -293,14 +256,14 @@
 
         body.dark-mode .form-group input,
         body.dark-mode .form-group textarea {
-            background: #302c28;
-            color: #f1ebe5;
-            border-color: #514a43;
+            background: #312c28;
+            color: #f1ebe4;
+            border-color: #514941;
         }
 
         body.dark-mode .form-group input::placeholder,
         body.dark-mode .form-group textarea::placeholder {
-            color: #a99e94;
+            color: #aaa098;
         }
 
         body.dark-mode .form-group input:focus,
@@ -309,22 +272,28 @@
         }
 
         body.dark-mode .info-box {
-            background: #302c28;
+            background: #312c28;
+            color: #e8e1d9;
         }
 
         body.dark-mode #themeButton {
-            background: #e8dfd5;
-            color: #29231f;
+            background: #e0d7ce;
+            color: #211d1a;
         }
 
         body.dark-mode #themeButton:hover {
-            background: #d8c8b8;
+            background: white;
         }
 
+        body.dark-mode .back-button {
+            background: #51463d;
+        }
 
-        /* =========================
-           TELEFON
-        ========================= */
+        body.dark-mode .back-button:hover {
+            background: #65574c;
+        }
+
+        /* TELEFON */
 
         @media (max-width: 600px) {
 
@@ -339,7 +308,7 @@
             nav a {
                 display: inline-block;
                 margin: 4px 6px;
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .contact-container {
@@ -357,8 +326,8 @@
             #themeButton {
                 right: 15px;
                 bottom: 15px;
-                width: 44px;
-                height: 44px;
+                width: 45px;
+                height: 45px;
                 font-size: 20px;
             }
 
@@ -368,13 +337,7 @@
 
 </head>
 
-
 <body>
-
-
-<!-- =========================
-     HEADER
-========================= -->
 
 <header>
 
@@ -384,59 +347,31 @@
 
 </header>
 
-
-<!-- =========================
-     MENÜ
-========================= -->
-
 <nav>
 
-    <a href="index.html">
-        Ana Sayfa
-    </a>
+    <a href="index.html">Ana Sayfa</a>
 
-    <a href="index.html#siirler">
-        Şiirler
-    </a>
+    <a href="index.html#siirler">Şiirler</a>
 
-    <a href="index.html#sozler">
-        Sözler
-    </a>
+    <a href="index.html#sozler">Sözler</a>
 
-    <a href="makaleler.html">
-        Makaleler
-    </a>
+    <a href="makaleler.html">Makaleler</a>
 
-    <a href="index.html#kategoriler">
-        Kategoriler
-    </a>
+    <a href="index.html#kategoriler">Kategoriler</a>
 
-    <a href="index.html#hakkimda">
-        Hakkımda
-    </a>
+    <a href="index.html#hakkimda">Hakkımda</a>
 
-    <a href="iletisim.html">
-        Bana Ulaşın
-    </a>
+    <a href="iletisim.html">Bana Ulaşın</a>
 
 </nav>
 
-
-<!-- =========================
-     TEMA BUTONU
-========================= -->
-
 <button
     id="themeButton"
-    aria-label="Tema değiştir"
+    type="button"
+    aria-label="Karanlık temaya geç"
 >
     🌙
 </button>
-
-
-<!-- =========================
-     İLETİŞİM
-========================= -->
 
 <main class="contact-container">
 
@@ -451,7 +386,6 @@
 
     </div>
 
-
     <div class="contact-box">
 
         <h3>Mesaj Gönder</h3>
@@ -460,11 +394,7 @@
             Aşağıdaki formu doldurarak bana ulaşabilirsiniz.
         </p>
 
-
         <form id="contactForm">
-
-
-            <!-- AD / RUMUZ -->
 
             <div class="form-group">
 
@@ -482,9 +412,6 @@
 
             </div>
 
-
-            <!-- E-POSTA -->
-
             <div class="form-group">
 
                 <label for="email">
@@ -500,9 +427,6 @@
                 >
 
             </div>
-
-
-            <!-- KONU -->
 
             <div class="form-group">
 
@@ -520,9 +444,6 @@
 
             </div>
 
-
-            <!-- MESAJ -->
-
             <div class="form-group">
 
                 <label for="message">
@@ -538,9 +459,6 @@
 
             </div>
 
-
-            <!-- GÖNDER -->
-
             <button
                 type="submit"
                 class="submit-button"
@@ -549,16 +467,9 @@
                 📩 Mesaj Gönder
             </button>
 
-
             <div id="formMessage"></div>
 
-
         </form>
-
-
-        <!-- =========================
-             BİLGİ
-        ========================= -->
 
         <div class="info-box">
 
@@ -571,11 +482,7 @@
 
         </div>
 
-
     </div>
-
-
-    <!-- GERİ DÖN -->
 
     <a
         href="index.html"
@@ -584,13 +491,7 @@
         ← Ana Sayfaya Dön
     </a>
 
-
 </main>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
@@ -598,54 +499,33 @@
 
 </footer>
 
-
-<!-- =========================
-     JAVASCRIPT
-========================= -->
-
 <script>
 
-
-/* =====================================================
+/* =========================
    KARANLIK MOD
-===================================================== */
+========================= */
 
 const themeButton =
     document.getElementById("themeButton");
 
-
 function updateThemeButton() {
 
-    if (
-        document.body.classList.contains("dark-mode")
-    ) {
+    const isDark =
+        document.body.classList.contains("dark-mode");
 
-        themeButton.textContent = "☀️";
+    themeButton.textContent =
+        isDark ? "☀️" : "🌙";
 
-        themeButton.setAttribute(
-            "aria-label",
-            "Açık temaya geç"
-        );
-
-    } else {
-
-        themeButton.textContent = "🌙";
-
-        themeButton.setAttribute(
-            "aria-label",
-            "Karanlık temaya geç"
-        );
-
-    }
-
+    themeButton.setAttribute(
+        "aria-label",
+        isDark
+            ? "Açık temaya geç"
+            : "Karanlık temaya geç"
+    );
 }
-
-
-/* KAYDEDİLMİŞ TEMAYI YÜKLE */
 
 const savedTheme =
     localStorage.getItem("kirikKalemTheme");
-
 
 if (savedTheme === "dark") {
 
@@ -653,41 +533,19 @@ if (savedTheme === "dark") {
 
 }
 
-
 updateThemeButton();
-
-
-/* TEMA DEĞİŞTİR */
 
 themeButton.addEventListener(
     "click",
     function() {
 
-        document.body.classList.toggle(
-            "dark-mode"
+        const isDark =
+            document.body.classList.toggle("dark-mode");
+
+        localStorage.setItem(
+            "kirikKalemTheme",
+            isDark ? "dark" : "light"
         );
-
-
-        if (
-            document.body.classList.contains(
-                "dark-mode"
-            )
-        ) {
-
-            localStorage.setItem(
-                "kirikKalemTheme",
-                "dark"
-            );
-
-        } else {
-
-            localStorage.setItem(
-                "kirikKalemTheme",
-                "light"
-            );
-
-        }
-
 
         updateThemeButton();
 
@@ -695,13 +553,8 @@ themeButton.addEventListener(
 );
 
 
-/* =====================================================
-   KIRIK KALEM - İLETİŞİM FORMU
-===================================================== */
-
-
 /* =========================
-   E-POSTA ADRESİ
+   İLETİŞİM FORMU
 ========================= */
 
 const contactEmail =
@@ -762,31 +615,18 @@ function containsBannedContent(text) {
     const words =
         normalized.split(" ");
 
-
     return bannedWords.some(function(word) {
 
         const normalizedWord =
             normalizeText(word);
 
+        if (!normalizedWord.includes(" ")) {
 
-        /* TEK KELİME */
-
-        if (
-            !normalizedWord.includes(" ")
-        ) {
-
-            return words.includes(
-                normalizedWord
-            );
+            return words.includes(normalizedWord);
 
         }
 
-
-        /* BİRDEN FAZLA KELİME */
-
-        return normalized.includes(
-            normalizedWord
-        );
+        return normalized.includes(normalizedWord);
 
     });
 
@@ -799,16 +639,14 @@ function containsBannedContent(text) {
 
 function isValidEmail(email) {
 
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
-        email
-    );
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
 }
 
 
-/* =====================================================
-   FORM
-===================================================== */
+/* =========================
+   FORM GÖNDERME
+========================= */
 
 document
     .getElementById("contactForm")
@@ -818,13 +656,11 @@ document
 
             event.preventDefault();
 
-
             const name =
                 document
                     .getElementById("name")
                     .value
                     .trim();
-
 
             const email =
                 document
@@ -832,13 +668,11 @@ document
                     .value
                     .trim();
 
-
             const subject =
                 document
                     .getElementById("subject")
                     .value
                     .trim();
-
 
             const message =
                 document
@@ -846,25 +680,16 @@ document
                     .value
                     .trim();
 
-
             const formMessage =
-                document.getElementById(
-                    "formMessage"
-                );
-
+                document.getElementById("formMessage");
 
             const submitButton =
-                document.getElementById(
-                    "submitButton"
-                );
-
+                document.getElementById("submitButton");
 
             formMessage.textContent = "";
 
 
-            /* =========================
-               BOŞ ALAN KONTROLÜ
-            ========================= */
+            /* BOŞ ALAN */
 
             if (
                 !name ||
@@ -881,13 +706,9 @@ document
             }
 
 
-            /* =========================
-               E-POSTA KONTROLÜ
-            ========================= */
+            /* E-POSTA */
 
-            if (
-                !isValidEmail(email)
-            ) {
+            if (!isValidEmail(email)) {
 
                 formMessage.textContent =
                     "Lütfen geçerli bir e-posta adresi girin.";
@@ -897,9 +718,7 @@ document
             }
 
 
-            /* =========================
-               YASAKLI KELİME KONTROLÜ
-            ========================= */
+            /* YASAKLI İÇERİK */
 
             if (
                 containsBannedContent(name) ||
@@ -915,30 +734,20 @@ document
             }
 
 
-            /* =========================
-               E-POSTA HAZIRLA
-            ========================= */
+            /* E-POSTA HAZIRLA */
 
             const mailSubject =
-                encodeURIComponent(
-                    subject
-                );
-
+                encodeURIComponent(subject);
 
             const mailBody =
                 encodeURIComponent(
-
                     "Ad / Rumuz: " +
                     name +
-
                     "\nE-posta: " +
                     email +
-
                     "\n\nMesaj:\n" +
                     message
-
                 );
-
 
             const mailtoLink =
                 "mailto:" +
@@ -949,31 +758,24 @@ document
                 mailBody;
 
 
-            /* =========================
-               BUTONU KİLİTLE
-            ========================= */
+            /* BUTONU KİLİTLE */
 
             submitButton.disabled = true;
 
             submitButton.textContent =
                 "📩 E-posta hazırlanıyor...";
 
-
             formMessage.textContent =
                 "E-posta uygulamanız açılıyor...";
 
 
-            /* =========================
-               E-POSTA UYGULAMASINI AÇ
-            ========================= */
+            /* E-POSTA UYGULAMASINI AÇ */
 
             window.location.href =
                 mailtoLink;
 
 
-            /* =========================
-               BUTONU TEKRAR AKTİFLEŞTİR
-            ========================= */
+            /* BUTONU TEKRAR AKTİFLEŞTİR */
 
             setTimeout(
                 function() {
@@ -991,7 +793,6 @@ document
     );
 
 </script>
-
 
 </body>
 
