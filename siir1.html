@@ -17,10 +17,11 @@
 }
 
 body {
-    font-family: Georgia, serif;
+    font-family: Georgia, "Times New Roman", serif;
     background: #f4efe7;
     color: #29231f;
     line-height: 1.8;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 header {
@@ -56,6 +57,11 @@ nav a:hover {
     color: #d8b98a;
 }
 
+
+/* =========================
+   ŞİİR
+========================= */
+
 .poem-container {
     max-width: 800px;
     margin: 60px auto;
@@ -90,6 +96,7 @@ nav a:hover {
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0,0,0,.08);
     font-size: 18px;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 .stanza {
@@ -112,6 +119,7 @@ nav a:hover {
     background: white;
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0,0,0,.08);
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 .comments-section h3 {
@@ -154,6 +162,8 @@ nav a:hover {
     border-radius: 6px;
     font-family: Georgia, serif;
     font-size: 16px;
+    background: white;
+    color: #29231f;
 }
 
 #commentForm textarea {
@@ -222,6 +232,115 @@ footer {
 
 
 /* =========================
+   KARANLIK MOD BUTONU
+   SAĞ ÜST
+========================= */
+
+#darkModeButton {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    width: 46px;
+    height: 46px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #332c27;
+    color: white;
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,.30);
+
+    z-index: 9999;
+
+    transition:
+        transform 0.2s ease,
+        background 0.3s ease;
+}
+
+#darkModeButton:hover {
+    transform: scale(1.08);
+    background: #57483d;
+}
+
+
+/* =========================
+   KARANLIK MOD
+========================= */
+
+body.dark-mode {
+    background: #171513;
+    color: #e8e0d8;
+}
+
+body.dark-mode .poem {
+    background: #24211e;
+    color: #e8e0d8;
+    box-shadow: 0 5px 20px rgba(0,0,0,.35);
+}
+
+body.dark-mode .comments-section {
+    background: #24211e;
+    color: #e8e0d8;
+    box-shadow: 0 5px 20px rgba(0,0,0,.35);
+}
+
+body.dark-mode .author {
+    color: #c7b8a8;
+}
+
+body.dark-mode .date {
+    color: #aaa096;
+}
+
+body.dark-mode #commentForm input,
+body.dark-mode #commentForm textarea {
+    background: #302c28;
+    color: #f1ebe4;
+    border-color: #514a43;
+}
+
+body.dark-mode #commentForm input::placeholder,
+body.dark-mode #commentForm textarea::placeholder {
+    color: #aaa096;
+}
+
+body.dark-mode .comment {
+    border-top-color: #48423c;
+}
+
+body.dark-mode .comment-date {
+    color: #aaa096;
+}
+
+body.dark-mode .back-button {
+    background: #3a342f;
+}
+
+body.dark-mode .back-button:hover {
+    background: #50483f;
+}
+
+body.dark-mode #darkModeButton {
+    background: #eee5dc;
+    color: #29231f;
+}
+
+body.dark-mode #darkModeButton:hover {
+    background: white;
+}
+
+
+/* =========================
    TELEFON
 ========================= */
 
@@ -251,6 +370,14 @@ footer {
         margin: 4px 6px;
         font-size: 14px;
     }
+
+    #darkModeButton {
+        top: 15px;
+        right: 15px;
+        width: 44px;
+        height: 44px;
+    }
+
 }
 
 </style>
@@ -444,6 +571,17 @@ Vallahi sen her zaman kalbimdesin Can Ali!
 </footer>
 
 
+<!-- TEK KARANLIK MOD BUTONU -->
+
+<button
+    id="darkModeButton"
+    aria-label="Karanlık modu değiştir"
+    title="Karanlık modu değiştir"
+>
+    🌙
+</button>
+
+
 <!-- SUPABASE -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -451,8 +589,77 @@ Vallahi sen her zaman kalbimdesin Can Ali!
 
 <script>
 
+/* =========================
+   KARANLIK MOD
+========================= */
+
+const darkModeButton =
+    document.getElementById("darkModeButton");
+
+
+function updateDarkModeButton() {
+
+    if (
+        document.body.classList.contains("dark-mode")
+    ) {
+
+        darkModeButton.textContent = "☀️";
+
+    } else {
+
+        darkModeButton.textContent = "🌙";
+
+    }
+
+}
+
+
+if (
+    localStorage.getItem("kirilKalemDarkMode") === "true"
+) {
+
+    document.body.classList.add("dark-mode");
+
+}
+
+
+updateDarkModeButton();
+
+
+darkModeButton.addEventListener(
+    "click",
+    function() {
+
+        document.body.classList.toggle(
+            "dark-mode"
+        );
+
+
+        const isDark =
+            document.body.classList.contains(
+                "dark-mode"
+            );
+
+
+        localStorage.setItem(
+            "kirilKalemDarkMode",
+            isDark
+        );
+
+
+        updateDarkModeButton();
+
+    }
+);
+
+
+/* =========================
+   SUPABASE
+========================= */
+
 const SUPABASE_URL =
     "https://idaxxculusfumyknwgid.supabase.co";
+
 
 const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_mSQ2DEn9KsMcdPDVq9FpDA_SsnPoF_d";
