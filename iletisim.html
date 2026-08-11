@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Bana Ulaşın | Kırık Kalem</title>
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -17,7 +20,7 @@
             font-family: Georgia, "Times New Roman", serif;
             background: #f4efe7;
             color: #29231f;
-            line-height: 1.7;
+            line-height: 1.8;
         }
 
         header {
@@ -40,6 +43,9 @@
             background: #332c27;
             text-align: center;
             padding: 14px 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         nav a {
@@ -47,6 +53,7 @@
             text-decoration: none;
             margin: 0 12px;
             font-size: 16px;
+            transition: color 0.3s;
         }
 
         nav a:hover {
@@ -54,97 +61,125 @@
         }
 
         .contact-container {
-            max-width: 700px;
+            max-width: 800px;
             margin: 60px auto;
-            padding: 0 20px;
+            padding: 0 25px;
         }
 
-        .contact-title {
+        .contact-header {
             text-align: center;
             margin-bottom: 35px;
         }
 
-        .contact-title h2 {
+        .contact-header h2 {
             font-size: 40px;
             margin-bottom: 10px;
         }
 
-        .contact-title p {
+        .contact-header p {
             color: #76695f;
-            font-style: italic;
         }
 
         .contact-box {
             background: white;
-            padding: 40px;
-            border-radius: 12px;
+            padding: 45px;
+            border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
         }
 
-        .form-group {
-            margin-bottom: 22px;
+        .contact-box h3 {
+            font-size: 26px;
+            margin-bottom: 15px;
         }
 
-        label {
+        .contact-box > p {
+            margin-bottom: 25px;
+            color: #5f554e;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 7px;
             font-weight: bold;
         }
 
-        input,
-        textarea {
+        .form-group input,
+        .form-group textarea {
             width: 100%;
-            padding: 13px;
-            border: 1px solid #d2c6b9;
+            padding: 12px;
+            border: 1px solid #d6cec5;
             border-radius: 6px;
             font-family: Georgia, "Times New Roman", serif;
             font-size: 16px;
-            background: #faf8f5;
+            background: #fff;
         }
 
-        textarea {
-            min-height: 180px;
+        .form-group textarea {
+            min-height: 160px;
             resize: vertical;
         }
 
-        input:focus,
-        textarea:focus {
+        .form-group input:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: #8a6f55;
         }
 
         .submit-button {
-            width: 100%;
-            padding: 14px;
+            padding: 12px 24px;
             border: none;
             border-radius: 6px;
             background: #332c27;
             color: white;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 17px;
             cursor: pointer;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 16px;
+            transition: background 0.3s;
         }
 
         .submit-button:hover {
             background: #57483d;
         }
 
-        .privacy-note {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #76695f;
-            text-align: center;
+        .submit-button:disabled {
+            opacity: 0.7;
+            cursor: default;
+        }
+
+        #formMessage {
+            margin-top: 18px;
+            font-size: 15px;
+        }
+
+        .info-box {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f4efe7;
+            border-radius: 8px;
+        }
+
+        .info-box h3 {
+            font-size: 21px;
+            margin-bottom: 8px;
         }
 
         .back-button {
             display: block;
             width: fit-content;
-            margin: 30px auto 0;
+            margin: 35px auto 0;
             padding: 10px 20px;
             background: #332c27;
             color: white;
             text-decoration: none;
             border-radius: 6px;
+        }
+
+        .back-button:hover {
+            background: #57483d;
         }
 
         footer {
@@ -161,98 +196,170 @@
                 font-size: 32px;
             }
 
+            nav {
+                padding: 12px 5px;
+            }
+
             nav a {
-                margin: 0 5px;
-                font-size: 13px;
+                display: inline-block;
+                margin: 4px 6px;
+                font-size: 14px;
             }
 
             .contact-container {
                 margin: 40px auto;
             }
 
-            .contact-title h2 {
+            .contact-header h2 {
                 font-size: 32px;
             }
 
             .contact-box {
                 padding: 25px;
             }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
+<!-- HEADER -->
+
 <header>
+
     <h1>✍️ Kırık Kalem</h1>
-    <p>Akkuli'nin şiirleri ve sözleri</h2>
-</p>
+
+    <p>Akkuli'nin şiirleri ve sözleri</p>
+
 </header>
 
+
+<!-- MENÜ -->
+
 <nav>
-    <a href="index.html">Ana Sayfa</a>
-    <a href="index.html#siirler">Şiirler</a>
-    <a href="index.html#sozler">Sözler</a>
-    <a href="index.html#kategoriler">Kategoriler</a>
-    <a href="index.html#hakkimda">Hakkımda</a>
+
+    <a href="index.html">
+        Ana Sayfa
+    </a>
+
+    <a href="index.html#siirler">
+        Şiirler
+    </a>
+
+    <a href="index.html#sozler">
+        Sözler
+    </a>
+
+    <a href="makaleler.html">
+        Makaleler
+    </a>
+
+    <a href="index.html#kategoriler">
+        Kategoriler
+    </a>
+
+    <a href="index.html#hakkimda">
+        Hakkımda
+    </a>
+
+    <a href="iletisim.html">
+        Bana Ulaşın
+    </a>
+
 </nav>
+
+
+<!-- İLETİŞİM -->
 
 <main class="contact-container">
 
-    <div class="contact-title">
-        <h2>Bana Ulaşın</h2>
+    <div class="contact-header">
+
+        <h2>📩 Bana Ulaşın</h2>
 
         <p>
-            Düşüncelerinizi, görüşlerinizi veya mesajınızı
-            benimle paylaşabilirsiniz.
+            Kırık Kalem hakkında görüşlerinizi,
+            önerilerinizi veya mesajlarınızı iletebilirsiniz.
         </p>
+
     </div>
+
 
     <div class="contact-box">
 
-        <!--
-        FORM BURADA OLACAK.
+        <h3>Mesaj Gönder</h3>
 
-        GitHub Pages tek başına form mesajlarını
-        e-posta olarak gönderemez.
+        <p>
+            Aşağıdaki formu doldurarak bana ulaşabilirsiniz.
+        </p>
 
-        Bir sonraki adımda ücretsiz bir form hizmetine
-        bağlayacağız.
-        -->
 
-        <form>
+        <form id="contactForm">
+
+
+            <!-- AD / RUMUZ -->
 
             <div class="form-group">
 
                 <label for="name">
-                    Adınız
+                    Adınız veya Rumuzunuz
                 </label>
 
                 <input
                     type="text"
                     id="name"
-                    name="name"
-                    placeholder="Adınızı yazın"
+                    maxlength="50"
+                    placeholder="Adınız veya rumuzunuz"
                     required
                 >
 
             </div>
 
+
+            <!-- E-POSTA -->
+
             <div class="form-group">
 
                 <label for="email">
-                    E-posta adresiniz
+                    E-posta Adresiniz
                 </label>
 
                 <input
                     type="email"
                     id="email"
-                    name="email"
-                    placeholder="ornek@email.com"
+                    maxlength="100"
+                    placeholder="ornek@mail.com"
                     required
                 >
 
             </div>
+
+
+            <!-- KONU -->
+
+            <div class="form-group">
+
+                <label for="subject">
+                    Konu
+                </label>
+
+                <input
+                    type="text"
+                    id="subject"
+                    maxlength="100"
+                    placeholder="Mesajınızın konusu"
+                    required
+                >
+
+            </div>
+
+
+            <!-- MESAJ -->
 
             <div class="form-group">
 
@@ -262,37 +369,347 @@
 
                 <textarea
                     id="message"
-                    name="message"
+                    maxlength="1000"
                     placeholder="Mesajınızı buraya yazın..."
                     required
                 ></textarea>
 
             </div>
 
+
             <button
                 type="submit"
                 class="submit-button"
+                id="submitButton"
             >
-                Mesajı Gönder
+                📩 Mesaj Gönder
             </button>
+
+
+            <div id="formMessage"></div>
+
 
         </form>
 
-        <p class="privacy-note">
-            Gönderdiğiniz bilgiler yalnızca iletişim amacıyla kullanılacaktır.
-        </p>
+
+        <!-- BİLGİ -->
+
+        <div class="info-box">
+
+            <h3>✍️ Kırık Kalem</h3>
+
+            <p>
+                Şiirler, sözler ve düşünceler üzerine
+                kurulu kişisel yazı alanı.
+            </p>
+
+        </div>
+
 
     </div>
+
 
     <a href="index.html" class="back-button">
         ← Ana Sayfaya Dön
     </a>
 
+
 </main>
 
+
+<!-- FOOTER -->
+
 <footer>
+
     © 2026 Kırık Kalem - Akkuli
+
 </footer>
 
+
+<script>
+
+    /* =====================================================
+       KIRIK KALEM - İLETİŞİM FORMU
+       ===================================================== */
+
+
+    /* =========================
+       E-POSTA ADRESİ
+    ========================= */
+
+    const contactEmail =
+        "kirikkalem01@hotmail.com";
+
+
+    /* =========================
+       YASAKLI KELİMELER
+    ========================= */
+
+    const bannedWords = [
+
+        "mal",
+        "amk",
+        "aq",
+        "orospu",
+        "piç",
+        "siktir",
+        "sikik",
+        "yarrak",
+        "ibne",
+        "göt",
+        "salak",
+        "aptal",
+        "gerizekalı",
+        "şerefsiz",
+        "haysiyetsiz",
+        "oe",
+        "orospu çocuğu"
+
+    ];
+
+
+    /* =========================
+       METİN NORMALLEŞTİRME
+    ========================= */
+
+    function normalizeText(text) {
+
+        return text
+            .toLocaleLowerCase("tr-TR")
+            .replace(/[^a-zçğıöşü0-9\s]/gi, " ")
+            .replace(/\s+/g, " ")
+            .trim();
+
+    }
+
+
+    /* =========================
+       YASAKLI İÇERİK KONTROLÜ
+    ========================= */
+
+    function containsBannedContent(text) {
+
+        const normalized =
+            normalizeText(text);
+
+        const words =
+            normalized.split(" ");
+
+
+        return bannedWords.some(function(word) {
+
+            const normalizedWord =
+                normalizeText(word);
+
+            return words.includes(
+                normalizedWord
+            );
+
+        });
+
+    }
+
+
+    /* =========================
+       E-POSTA KONTROLÜ
+    ========================= */
+
+    function isValidEmail(email) {
+
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+            email
+        );
+
+    }
+
+
+    /* =========================
+       FORM
+    ========================= */
+
+    document
+        .getElementById("contactForm")
+        .addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const name =
+                    document
+                        .getElementById("name")
+                        .value
+                        .trim();
+
+
+                const email =
+                    document
+                        .getElementById("email")
+                        .value
+                        .trim();
+
+
+                const subject =
+                    document
+                        .getElementById("subject")
+                        .value
+                        .trim();
+
+
+                const message =
+                    document
+                        .getElementById("message")
+                        .value
+                        .trim();
+
+
+                const formMessage =
+                    document.getElementById(
+                        "formMessage"
+                    );
+
+
+                const submitButton =
+                    document.getElementById(
+                        "submitButton"
+                    );
+
+
+                /* MESAJI TEMİZLE */
+
+                formMessage.textContent = "";
+
+
+                /* =========================
+                   BOŞ ALAN KONTROLÜ
+                ========================= */
+
+                if (
+                    !name ||
+                    !email ||
+                    !subject ||
+                    !message
+                ) {
+
+                    formMessage.textContent =
+                        "Lütfen tüm alanları doldurun.";
+
+                    return;
+
+                }
+
+
+                /* =========================
+                   E-POSTA KONTROLÜ
+                ========================= */
+
+                if (
+                    !isValidEmail(email)
+                ) {
+
+                    formMessage.textContent =
+                        "Lütfen geçerli bir e-posta adresi girin.";
+
+                    return;
+
+                }
+
+
+                /* =========================
+                   YASAKLI KELİME KONTROLÜ
+                ========================= */
+
+                if (
+                    containsBannedContent(name) ||
+                    containsBannedContent(subject) ||
+                    containsBannedContent(message)
+                ) {
+
+                    formMessage.textContent =
+                        "Mesajınız topluluk kurallarımıza uygun değil. Küfür, hakaret ve aşırı argo kullanılamaz.";
+
+                    return;
+
+                }
+
+
+                /* =========================
+                   E-POSTA HAZIRLA
+                ========================= */
+
+                const mailSubject =
+                    encodeURIComponent(
+                        subject
+                    );
+
+
+                const mailBody =
+                    encodeURIComponent(
+
+                        "Ad / Rumuz: " +
+                        name +
+
+                        "\nE-posta: " +
+                        email +
+
+                        "\n\nMesaj:\n" +
+                        message
+
+                    );
+
+
+                const mailtoLink =
+                    "mailto:" +
+                    contactEmail +
+                    "?subject=" +
+                    mailSubject +
+                    "&body=" +
+                    mailBody;
+
+
+                /* =========================
+                   BUTONU KİLİTLE
+                ========================= */
+
+                submitButton.disabled = true;
+
+                submitButton.textContent =
+                    "📩 E-posta hazırlanıyor...";
+
+
+                formMessage.textContent =
+                    "E-posta uygulamanız açılıyor...";
+
+
+                /* =========================
+                   E-POSTA UYGULAMASINI AÇ
+                ========================= */
+
+                window.location.href =
+                    mailtoLink;
+
+
+                /* BUTONU TEKRAR AKTİFLEŞTİR */
+
+                setTimeout(
+                    function() {
+
+                        submitButton.disabled = false;
+
+                        submitButton.textContent =
+                            "📩 Mesaj Gönder";
+
+                    },
+                    3000
+                );
+
+            }
+        );
+
+</script>
+
+
 </body>
+
 </html>
