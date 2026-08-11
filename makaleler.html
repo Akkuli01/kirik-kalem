@@ -66,7 +66,8 @@ nav a:hover {
 #darkModeButton {
     position: fixed;
     right: 20px;
-    bottom: 20px;
+    top: 20px;
+    bottom: auto;
     z-index: 2000;
     width: 48px;
     height: 48px;
@@ -360,7 +361,8 @@ body.dark-mode #darkModeButton:hover {
 
     #darkModeButton {
         right: 15px;
-        bottom: 15px;
+        top: 15px;
+        bottom: auto;
         width: 45px;
         height: 45px;
     }
@@ -537,6 +539,13 @@ function applyDarkMode(isDark) {
 
     darkModeButton.textContent =
         isDark ? "☀️" : "🌙";
+
+    darkModeButton.setAttribute(
+        "aria-label",
+        isDark
+            ? "Aydınlık moda geç"
+            : "Karanlık moda geç"
+    );
 
 }
 
