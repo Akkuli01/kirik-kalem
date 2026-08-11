@@ -2,12 +2,14 @@
 <html lang="tr">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Can Ali | Kırık Kalem</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -30,6 +32,7 @@ header {
 
 header h1 {
     font-size: 38px;
+    margin-bottom: 5px;
 }
 
 header p {
@@ -46,6 +49,11 @@ nav a {
     color: white;
     text-decoration: none;
     margin: 0 15px;
+    font-size: 16px;
+}
+
+nav a:hover {
+    color: #d8b98a;
 }
 
 .poem-container {
@@ -61,6 +69,7 @@ nav a {
 
 .poem-title h2 {
     font-size: 40px;
+    margin-bottom: 10px;
 }
 
 .author {
@@ -71,6 +80,7 @@ nav a {
 .date {
     color: #8b7c70;
     font-size: 14px;
+    margin-top: 5px;
 }
 
 .poem {
@@ -86,17 +96,53 @@ nav a {
     margin-bottom: 35px;
 }
 
+.stanza:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================
+   YORUM VE BEĞENİ
+========================= */
+
 .comments-section {
     max-width: 800px;
     margin: 40px auto 0;
     padding: 30px;
     background: white;
     border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
 }
 
 .comments-section h3 {
     font-size: 28px;
     margin-bottom: 20px;
+}
+
+#likeButton {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 6px;
+    background: #8b3a3a;
+    color: white;
+    cursor: pointer;
+    font-family: Georgia, serif;
+    font-size: 16px;
+}
+
+#likeButton:hover {
+    background: #a64a4a;
+}
+
+#likeButton:disabled {
+    opacity: .7;
+    cursor: default;
+}
+
+#likeMessage,
+#commentMessage {
+    margin: 15px 0;
+    font-size: 15px;
 }
 
 #commentForm input,
@@ -112,10 +158,10 @@ nav a {
 
 #commentForm textarea {
     min-height: 120px;
+    resize: vertical;
 }
 
-#commentForm button,
-#likeButton {
+#commentForm button {
     padding: 11px 20px;
     border: none;
     border-radius: 6px;
@@ -126,9 +172,8 @@ nav a {
     font-size: 16px;
 }
 
-#likeButton {
-    margin-bottom: 20px;
-    background: #8b3a3a;
+#commentForm button:hover {
+    background: #57483d;
 }
 
 .comment {
@@ -138,20 +183,18 @@ nav a {
 
 .comment-author {
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .comment-date {
     color: #8b7c70;
     font-size: 13px;
+    margin-bottom: 8px;
 }
 
 .comment-text {
     white-space: pre-wrap;
-}
-
-#commentMessage,
-#likeMessage {
-    margin: 15px 0;
+    word-break: break-word;
 }
 
 .back-button {
@@ -165,6 +208,10 @@ nav a {
     border-radius: 6px;
 }
 
+.back-button:hover {
+    background: #57483d;
+}
+
 footer {
     background: #211d1a;
     color: #cfc3b8;
@@ -173,7 +220,13 @@ footer {
     margin-top: 70px;
 }
 
+
+/* =========================
+   TELEFON
+========================= */
+
 @media (max-width: 600px) {
+
     .poem {
         padding: 25px;
         font-size: 17px;
@@ -186,28 +239,66 @@ footer {
     .comments-section {
         margin-left: 15px;
         margin-right: 15px;
+        padding: 20px;
+    }
+
+    nav {
+        padding: 12px 5px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 4px 6px;
+        font-size: 14px;
     }
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- HEADER -->
+
 <header>
+
     <h1>✍️ Kırık Kalem</h1>
+
     <p>Akkuli'nin şiirleri ve sözleri</p>
+
 </header>
 
+
+<!-- MENÜ -->
+
 <nav>
-    <a href="index.html">Ana Sayfa</a>
-    <a href="siir1.html">Şiirler</a>
+
+    <a href="index.html#anasayfa">Ana Sayfa</a>
+
+    <a href="index.html#siirler">Şiirler</a>
+
+    <a href="index.html#sozler">Sözler</a>
+
+    <a href="makaleler.html">Makaleler</a>
+
+    <a href="index.html#kategoriler">Kategoriler</a>
+
+    <a href="index.html#hakkimda">Hakkımda</a>
+
 </nav>
+
+
+<!-- ŞİİR -->
 
 <main>
 
 <div class="poem-container">
 
 <div class="poem-title">
+
     <h2>Can Ali</h2>
 
     <p class="author">
@@ -218,110 +309,145 @@ footer {
         İlk yazım tarihi: Bilinmiyor<br>
         Arşiv tarihi: 9 Ağustos 2026
     </p>
+
 </div>
+
 
 <div class="poem">
 
 <div class="stanza">
+
 Bilmiyorum anlatmaya mısralar yeter mi?<br>
 Hangi lisan ile anlatayım söyle bana Ey Ali!<br>
 Şu fani alem de sorsalar bu acize ah bir seni<br>
 Dost'tan öte kardeş oldun bu kul'a Sen Ali!
+
 </div>
 
+
 <div class="stanza">
+
 Yaşımız yedi veya sekiz, iki yabancı gibiydik okulda<br>
 Ne ben sana yakın durdum ne de sen bana uzakta<br>
 Şimdi dost denilince gönül ısınmıyor senden başkasına<br>
 Şu garip gönlümde yerin bir başka Dost Ali!
+
 </div>
 
+
 <div class="stanza">
+
 Sevda neden'dir bilmem bir kez güldürmedi yüzümüzü<br>
 Ne çok paylaşırdık bir araya gelince bir birimizle derdimizi<br>
 Rabbim biliyor hiç olmazsa şu garip gönlümüzü<br>
 Lüzum yok başkasına sen ol yeter ki Yar Ali!
+
 </div>
 
+
 <div class="stanza">
+
 Kimimiz hayat'a erken atıldı koşuşturdu aynı sen gibi<br>
 Kimimiz can telaşıyla oradan oraya savruldu aynı ben gibi<br>
 Şöyle bakıyorum da olmamış henüz bu savaşın galibi<br>
 Olurda bir gün pes edersem sen pes etme Er Ali!
+
 </div>
 
+
 <div class="stanza">
+
 Dünya bu yaaa sende çekmişsindir az da olsa kahrını<br>
 Bilirim yine de kırmazsın kimsenin gönül hatrını<br>
 Sen dua et her zorlukta Rabbim verir sabrını<br>
 O'ndan başkasına gerek var mı kul Ali!
+
 </div>
 
+
 <div class="stanza">
+
 Olur da bir gün yolumuz düşerse ayrılığa<br>
 Sağ elini ne olur götür kalbin üstüne<br>
 İşte bulacaksın inanıyorum ki beni orada<br>
 Vallahi sen her zaman kalbimdesin Can Ali!
-</div>
 
 </div>
 
-<!-- BEĞENİ -->
+</div>
+
+
+<!-- YORUM VE BEĞENİ -->
 
 <div class="comments-section">
 
-<button id="likeButton">
-    ❤️ Beğen <span id="likeCount">0</span>
-</button>
+    <button id="likeButton">
+        ❤️ Beğen <span id="likeCount">0</span>
+    </button>
 
-<div id="likeMessage"></div>
+    <div id="likeMessage"></div>
 
-<h3>💬 Yorumlar</h3>
 
-<form id="commentForm">
+    <h3>💬 Yorumlar</h3>
 
-<input
-    type="text"
-    id="authorName"
-    placeholder="Adınız veya rumuzunuz"
-    maxlength="50"
-    required
->
 
-<textarea
-    id="commentText"
-    placeholder="Yorumunuzu yazın..."
-    maxlength="500"
-    required
-></textarea>
+    <form id="commentForm">
 
-<button type="submit">
-    Yorum Gönder
-</button>
+        <input
+            type="text"
+            id="authorName"
+            placeholder="Adınız veya rumuzunuz"
+            maxlength="50"
+            required
+        >
 
-</form>
+        <textarea
+            id="commentText"
+            placeholder="Yorumunuzu yazın..."
+            maxlength="500"
+            required
+        ></textarea>
 
-<div id="commentMessage"></div>
+        <button type="submit">
+            Yorum Gönder
+        </button>
 
-<div id="commentsList">
-    <p>Yorumlar yükleniyor...</p>
+    </form>
+
+
+    <div id="commentMessage"></div>
+
+
+    <div id="commentsList">
+        <p>Yorumlar yükleniyor...</p>
+    </div>
+
 </div>
 
-</div>
 
 <a href="index.html" class="back-button">
     ← Ana Sayfaya Dön
 </a>
 
+
 </div>
 
 </main>
 
+
+<!-- FOOTER -->
+
 <footer>
+
     © 2026 Kırık Kalem - Akkuli
+
 </footer>
 
+
+<!-- SUPABASE -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
 <script>
 
@@ -331,14 +457,20 @@ const SUPABASE_URL =
 const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_mSQ2DEn9KsMcdPDVq9FpDA_SsnPoF_d";
 
+
 const supabaseClient =
     window.supabase.createClient(
         SUPABASE_URL,
         SUPABASE_PUBLISHABLE_KEY
     );
 
+
 const poemId = "can-ali";
 
+
+/* =========================
+   YASAKLI KELİMELER
+========================= */
 
 const bannedWords = [
     "mal",
@@ -374,9 +506,11 @@ function normalizeText(text) {
 
 function containsBannedContent(text) {
 
-    const normalized = normalizeText(text);
+    const normalized =
+        normalizeText(text);
 
-    const words = normalized.split(" ");
+    const words =
+        normalized.split(" ");
 
     return bannedWords.some(function(word) {
 
@@ -389,12 +523,15 @@ function containsBannedContent(text) {
 }
 
 
-/* YORUMLARI GETİR */
+/* =========================
+   YORUMLARI GETİR
+========================= */
 
 async function loadComments() {
 
     const commentsList =
         document.getElementById("commentsList");
+
 
     const result =
         await supabaseClient
@@ -402,13 +539,17 @@ async function loadComments() {
             .select(
                 "author_name, content, created_at"
             )
-            .eq("poem_id", poemId)
+            .eq(
+                "poem_id",
+                poemId
+            )
             .order(
                 "created_at",
                 {
                     ascending: false
                 }
             );
+
 
     if (result.error) {
 
@@ -421,9 +562,13 @@ async function loadComments() {
             "<p>Yorumlar yüklenirken bir hata oluştu.</p>";
 
         return;
+
     }
 
-    const data = result.data;
+
+    const data =
+        result.data;
+
 
     if (!data || data.length === 0) {
 
@@ -431,55 +576,73 @@ async function loadComments() {
             "<p>Henüz yorum yapılmamış. İlk yorumu sen yap! ✍️</p>";
 
         return;
+
     }
 
+
     commentsList.innerHTML = "";
+
 
     data.forEach(function(comment) {
 
         const commentElement =
             document.createElement("div");
 
-        commentElement.className = "comment";
+        commentElement.className =
+            "comment";
+
 
         const author =
             document.createElement("div");
 
-        author.className = "comment-author";
+        author.className =
+            "comment-author";
 
         author.textContent =
             comment.author_name;
 
+
         const date =
             document.createElement("div");
 
-        date.className = "comment-date";
+        date.className =
+            "comment-date";
 
         date.textContent =
             new Date(
                 comment.created_at
             ).toLocaleString("tr-TR");
 
+
         const text =
             document.createElement("div");
 
-        text.className = "comment-text";
+        text.className =
+            "comment-text";
 
         text.textContent =
             comment.content;
 
+
         commentElement.appendChild(author);
+
         commentElement.appendChild(date);
+
         commentElement.appendChild(text);
 
-        commentsList.appendChild(commentElement);
+
+        commentsList.appendChild(
+            commentElement
+        );
 
     });
 
 }
 
 
-/* YORUM GÖNDER */
+/* =========================
+   YORUM GÖNDER
+========================= */
 
 document
     .getElementById("commentForm")
@@ -489,11 +652,13 @@ document
 
             event.preventDefault();
 
+
             const authorName =
                 document
                     .getElementById("authorName")
                     .value
                     .trim();
+
 
             const commentText =
                 document
@@ -501,10 +666,12 @@ document
                     .value
                     .trim();
 
+
             const message =
                 document.getElementById(
                     "commentMessage"
                 );
+
 
             if (
                 !authorName ||
@@ -515,7 +682,9 @@ document
                     "Lütfen adınızı ve yorumunuzu yazın.";
 
                 return;
+
             }
+
 
             if (
                 containsBannedContent(authorName) ||
@@ -526,7 +695,9 @@ document
                     "Yorumunuz topluluk kurallarımıza uygun değil.";
 
                 return;
+
             }
+
 
             const result =
                 await supabaseClient
@@ -544,6 +715,7 @@ document
 
                     });
 
+
             if (result.error) {
 
                 console.error(
@@ -555,14 +727,18 @@ document
                     "Yorum gönderilemedi. Lütfen tekrar deneyin.";
 
                 return;
+
             }
+
 
             message.textContent =
                 "Yorumunuz yayınlandı! ❤️";
 
+
             document
                 .getElementById("commentForm")
                 .reset();
+
 
             loadComments();
 
@@ -570,12 +746,17 @@ document
     );
 
 
-/* BEĞENİLERİ GETİR */
+/* =========================
+   BEĞENİLERİ GETİR
+========================= */
 
 async function loadLikes() {
 
     const likeCount =
-        document.getElementById("likeCount");
+        document.getElementById(
+            "likeCount"
+        );
+
 
     const result =
         await supabaseClient
@@ -592,6 +773,7 @@ async function loadLikes() {
                 poemId
             );
 
+
     if (result.error) {
 
         console.error(
@@ -600,7 +782,9 @@ async function loadLikes() {
         );
 
         return;
+
     }
+
 
     likeCount.textContent =
         result.count || 0;
@@ -608,7 +792,9 @@ async function loadLikes() {
 }
 
 
-/* BEĞENİ */
+/* =========================
+   BEĞENİ GÖNDER
+========================= */
 
 document
     .getElementById("likeButton")
@@ -621,12 +807,15 @@ document
                     "likeButton"
                 );
 
+
             const message =
                 document.getElementById(
                     "likeMessage"
                 );
 
+
             button.disabled = true;
+
 
             const result =
                 await supabaseClient
@@ -637,6 +826,7 @@ document
                             poemId
 
                     });
+
 
             if (result.error) {
 
@@ -651,12 +841,16 @@ document
                 button.disabled = false;
 
                 return;
+
             }
+
 
             message.textContent =
                 "Beğendiğin için teşekkürler! ❤️";
 
+
             await loadLikes();
+
 
             setTimeout(
                 function() {
@@ -671,10 +865,16 @@ document
     );
 
 
+/* =========================
+   SAYFA AÇILINCA
+========================= */
+
 loadComments();
+
 loadLikes();
 
 </script>
+
 
 </body>
 </html>
