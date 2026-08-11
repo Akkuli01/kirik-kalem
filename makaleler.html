@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <title>İnsan Neden Yalnızlaşır? | Kırık Kalem</title>
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -40,6 +42,9 @@
             background: #332c27;
             text-align: center;
             padding: 14px 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         nav a {
@@ -47,6 +52,7 @@
             text-decoration: none;
             margin: 0 12px;
             font-size: 16px;
+            transition: color 0.3s;
         }
 
         nav a:hover {
@@ -97,184 +103,104 @@
             margin-bottom: 0;
         }
 
-        .back-button {
-            display: block;
-            width: fit-content;
-            margin: 35px auto 0;
-            padding: 10px 20px;
-            background: #332c27;
-            color: white;
-            text-decoration: none;
+        /* =========================
+           YORUM VE BEĞENİ
+        ========================= */
+
+        .comments-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .comments-section h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        #likeButton {
+            padding: 11px 20px;
+            border: none;
             border-radius: 6px;
-        }
-
-        .back-button:hover {
-            background: #57483d;
-        }
-
-        footer {
-            background: #211d1a;
-            color: #cfc3b8;
-            text-align: center;
-            padding: 25px;
-            margin-top: 70px;
-        }
-
-        @media (max-width: 600px) {
-
-            header h1 {
-                font-size: 32px;
-            }
-
-            nav a {
-                margin: 0 5px;
-                font-size: 13px;
-            }
-
-            .article-container {
-                margin: 40px auto;
-            }
-
-            .article-header h2 {
-                font-size: 32px;
-            }
-
-            .article {
-                padding: 25px;
-                font-size: 17px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-<header>
-    <h1>✍️ Kırık Kalem</h1>
-    <p>Kelimelerin sustuğu yerde kalem konuşur.</p>
-</header>
-
-<nav>
-    <a href="index.html">Ana Sayfa</a>
-    <a href="index.html#siirler">Şiirler</a>
-    <a href="index.html#sozler">Sözler</a>
-    <a href="makaleler.html">Makaleler</a>
-    <a href="index.html#kategoriler">Kategoriler</a>
-    <a href="index.html#hakkimda">Hakkımda</a>
-    <a href="iletisim.html">Bana Ulaşın</a>
-</nav>
-
-<main class="article-container">
-
-    <div class="article-header">
-
-        <h2>İnsan Neden Yalnızlaşır?</h2>
-
-        <div class="category">
-            Kategori: Hayat
-        </div>
-
-        <div class="date">
-            Arşiv tarihi: 10 Ağustos 2026
-        </div>
-
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>İnsan Neden Yalnızlaşır? | Kırık Kalem</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Georgia, "Times New Roman", serif;
-            background: #f4efe7;
-            color: #29231f;
-            line-height: 1.8;
-        }
-
-        header {
-            background: #211d1a;
+            background: #8b3a3a;
             color: white;
-            text-align: center;
-            padding: 35px 20px;
-        }
-
-        header h1 {
-            font-size: 38px;
-            margin-bottom: 5px;
-        }
-
-        header p {
-            color: #d6c7b8;
-        }
-
-        nav {
-            background: #332c27;
-            text-align: center;
-            padding: 14px 10px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 12px;
+            cursor: pointer;
+            font-family: Georgia, serif;
             font-size: 16px;
         }
 
-        nav a:hover {
-            color: #d8b98a;
+        #likeButton:hover {
+            background: #a64a4a;
         }
 
-        .article-container {
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 0 25px;
+        #likeButton:disabled {
+            opacity: 0.7;
+            cursor: default;
         }
 
-        .article-header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .article-header h2 {
-            font-size: 40px;
-            margin-bottom: 12px;
-        }
-
-        .category {
-            color: #8a6f55;
+        #likeMessage,
+        #commentMessage {
+            margin: 15px 0;
             font-size: 15px;
         }
 
-        .date {
+        #commentForm input,
+        #commentForm textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #d6cec5;
+            border-radius: 6px;
+            font-family: Georgia, serif;
+            font-size: 16px;
+        }
+
+        #commentForm textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        #commentForm button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #332c27;
+            color: white;
+            cursor: pointer;
+            font-family: Georgia, serif;
+            font-size: 16px;
+        }
+
+        #commentForm button:hover {
+            background: #57483d;
+        }
+
+        #commentForm button:disabled {
+            opacity: 0.7;
+            cursor: default;
+        }
+
+        .comment {
+            border-top: 1px solid #e5ddd5;
+            padding: 20px 0;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .comment-date {
             color: #8b7c70;
-            font-size: 14px;
-            margin-top: 5px;
+            font-size: 13px;
+            margin-bottom: 8px;
         }
 
-        .article {
-            background: white;
-            padding: 45px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            font-size: 18px;
-        }
-
-        .article p {
-            margin-bottom: 25px;
-            text-align: left;
-        }
-
-        .article p:last-child {
-            margin-bottom: 0;
+        .comment-text {
+            white-space: pre-wrap;
+            word-break: break-word;
         }
 
         .back-button {
@@ -300,14 +226,23 @@
             margin-top: 70px;
         }
 
+        /* =========================
+           TELEFON
+        ========================= */
+
         @media (max-width: 600px) {
 
             header h1 {
                 font-size: 32px;
             }
 
+            nav {
+                padding: 12px 5px;
+            }
+
             nav a {
-                margin: 0 5px;
+                display: inline-block;
+                margin: 4px 6px;
                 font-size: 13px;
             }
 
@@ -323,32 +258,81 @@
                 padding: 25px;
                 font-size: 17px;
             }
+
+            .comments-section {
+                margin-left: 0;
+                margin-right: 0;
+                padding: 20px;
+            }
+
+            .comments-section h3 {
+                font-size: 24px;
+            }
         }
+
     </style>
 </head>
 
+
 <body>
 
+
+<!-- HEADER -->
+
 <header>
+
     <h1>✍️ Kırık Kalem</h1>
+
     <p>Kelimelerin sustuğu yerde kalem konuşur.</p>
+
 </header>
 
+
+<!-- MENÜ -->
+
 <nav>
-    <a href="index.html">Ana Sayfa</a>
-    <a href="index.html#siirler">Şiirler</a>
-    <a href="index.html#sozler">Sözler</a>
-    <a href="makaleler.html">Makaleler</a>
-    <a href="index.html#kategoriler">Kategoriler</a>
-    <a href="index.html#hakkimda">Hakkımda</a>
-    <a href="iletisim.html">Bana Ulaşın</a>
+
+    <a href="index.html">
+        Ana Sayfa
+    </a>
+
+    <a href="index.html#siirler">
+        Şiirler
+    </a>
+
+    <a href="index.html#sozler">
+        Sözler
+    </a>
+
+    <a href="makaleler.html">
+        Makaleler
+    </a>
+
+    <a href="index.html#kategoriler">
+        Kategoriler
+    </a>
+
+    <a href="index.html#hakkimda">
+        Hakkımda
+    </a>
+
+    <a href="iletisim.html">
+        Bana Ulaşın
+    </a>
+
 </nav>
+
+
+<!-- MAKALE -->
 
 <main class="article-container">
 
+
     <div class="article-header">
 
-        <h2>İnsan Neden Yalnızlaşır?</h2>
+        <h2>
+            İnsan Neden Yalnızlaşır?
+        </h2>
 
         <div class="category">
             Kategori: Hayat
@@ -360,29 +344,643 @@
 
     </div>
 
+
     <article class="article">
 
-      <div class="article-card">
+        <div class="article-card">
 
-    <h3>Henüz makale eklenmedi.</h3>
+            <h3>
+                Henüz makale eklenmedi.
+            </h3>
 
-    <p>
-        Yakında burada yeni yazılar yer alacak.
-    </p>
+            <p>
+                Yakında burada yeni yazılar yer alacak.
+            </p>
 
-</div>
+        </div>
 
     </article>
 
+
+    <!-- =========================
+         BEĞENİ VE YORUMLAR
+    ========================= -->
+
+    <div class="comments-section">
+
+
+        <!-- BEĞENİ -->
+
+        <button id="likeButton">
+
+            ❤️ Beğen
+
+            <span id="likeCount">
+                0
+            </span>
+
+        </button>
+
+
+        <div id="likeMessage"></div>
+
+
+        <!-- YORUMLAR -->
+
+        <h3>
+            💬 Yorumlar
+        </h3>
+
+
+        <form id="commentForm">
+
+
+            <input
+                type="text"
+                id="authorName"
+                placeholder="Adınız veya rumuzunuz"
+                maxlength="50"
+                required
+            >
+
+
+            <textarea
+                id="commentText"
+                placeholder="Yorumunuzu yazın..."
+                maxlength="500"
+                required
+            ></textarea>
+
+
+            <button type="submit">
+                Yorum Gönder
+            </button>
+
+
+        </form>
+
+
+        <div id="commentMessage"></div>
+
+
+        <div id="commentsList">
+
+            <p>
+                Yorumlar yükleniyor...
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- GERİ DÖN -->
+
     <a href="makaleler.html" class="back-button">
+
         ← Makalelere Dön
+
     </a>
+
 
 </main>
 
+
+<!-- FOOTER -->
+
 <footer>
-    © 2026 Kırık Kalem
+
+    © 2026 Kırık Kalem - Akkuli
+
 </footer>
+
+
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+
+/* =========================
+   SUPABASE AYARLARI
+========================= */
+
+const SUPABASE_URL =
+    "https://idaxxculusfumyknwgid.supabase.co";
+
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_mSQ2DEn9KsMcdPDVq9FpDA_SsnPoF_d";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+/* =========================
+   BU MAKALE'NİN ID'Sİ
+========================= */
+
+const articleId =
+    "insan-neden-yalnizlasir";
+
+
+/* =========================
+   YASAKLI KELİMELER
+========================= */
+
+const bannedWords = [
+
+    "mal",
+    "amk",
+    "aq",
+    "orospu",
+    "piç",
+    "siktir",
+    "sikik",
+    "yarrak",
+    "ibne",
+    "göt",
+    "salak",
+    "aptal",
+    "gerizekalı",
+    "şerefsiz",
+    "haysiyetsiz",
+    "oe",
+    "orospu çocuğu"
+
+];
+
+
+/* =========================
+   METİN NORMALLEŞTİRME
+========================= */
+
+function normalizeText(text) {
+
+    return text
+        .toLocaleLowerCase("tr-TR")
+        .replace(/[^a-zçğıöşü0-9\s]/gi, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+}
+
+
+/* =========================
+   YASAKLI KELİME KONTROLÜ
+========================= */
+
+function containsBannedContent(text) {
+
+    const normalized =
+        normalizeText(text);
+
+
+    const words =
+        normalized.split(" ");
+
+
+    return bannedWords.some(function(word) {
+
+        const normalizedBannedWord =
+            normalizeText(word);
+
+
+        /*
+         * Tek kelimelik yasaklı kelimeleri
+         * kontrol eder.
+         */
+
+        if (
+            normalizedBannedWord.split(" ").length === 1
+        ) {
+
+            return words.includes(
+                normalizedBannedWord
+            );
+
+        }
+
+
+        /*
+         * Birden fazla kelimeden oluşan
+         * yasaklı ifadeleri kontrol eder.
+         */
+
+        return normalized.includes(
+            normalizedBannedWord
+        );
+
+    });
+
+}
+
+
+/* =========================
+   YORUMLARI GETİR
+========================= */
+
+async function loadComments() {
+
+    const commentsList =
+        document.getElementById(
+            "commentsList"
+        );
+
+
+    const result =
+        await supabaseClient
+            .from("comments")
+            .select(
+                "author_name, content, created_at"
+            )
+            .eq(
+                "poem_id",
+                articleId
+            )
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            );
+
+
+    if (result.error) {
+
+        console.error(
+            "Supabase yorum hatası:",
+            result.error
+        );
+
+
+        commentsList.innerHTML =
+            "<p>Yorumlar yüklenirken bir hata oluştu.</p>";
+
+
+        return;
+
+    }
+
+
+    const data =
+        result.data;
+
+
+    if (!data || data.length === 0) {
+
+        commentsList.innerHTML =
+            "<p>Henüz yorum yapılmamış. İlk yorumu sen yap! ✍️</p>";
+
+
+        return;
+
+    }
+
+
+    commentsList.innerHTML = "";
+
+
+    data.forEach(function(comment) {
+
+
+        const commentElement =
+            document.createElement("div");
+
+
+        commentElement.className =
+            "comment";
+
+
+        const author =
+            document.createElement("div");
+
+
+        author.className =
+            "comment-author";
+
+
+        author.textContent =
+            comment.author_name;
+
+
+        const date =
+            document.createElement("div");
+
+
+        date.className =
+            "comment-date";
+
+
+        date.textContent =
+            new Date(
+                comment.created_at
+            ).toLocaleString("tr-TR");
+
+
+        const text =
+            document.createElement("div");
+
+
+        text.className =
+            "comment-text";
+
+
+        text.textContent =
+            comment.content;
+
+
+        commentElement.appendChild(
+            author
+        );
+
+
+        commentElement.appendChild(
+            date
+        );
+
+
+        commentElement.appendChild(
+            text
+        );
+
+
+        commentsList.appendChild(
+            commentElement
+        );
+
+    });
+
+}
+
+
+/* =========================
+   YORUM GÖNDER
+========================= */
+
+document
+    .getElementById("commentForm")
+    .addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const authorName =
+                document
+                    .getElementById("authorName")
+                    .value
+                    .trim();
+
+
+            const commentText =
+                document
+                    .getElementById("commentText")
+                    .value
+                    .trim();
+
+
+            const message =
+                document.getElementById(
+                    "commentMessage"
+                );
+
+
+            const submitButton =
+                document.querySelector(
+                    "#commentForm button"
+                );
+
+
+            if (
+                !authorName ||
+                !commentText
+            ) {
+
+                message.textContent =
+                    "Lütfen adınızı ve yorumunuzu yazın.";
+
+                return;
+
+            }
+
+
+            /* YASAKLI KELİME KONTROLÜ */
+
+            if (
+                containsBannedContent(authorName) ||
+                containsBannedContent(commentText)
+            ) {
+
+                message.textContent =
+                    "Yorumunuz topluluk kurallarımıza uygun değil.";
+
+                return;
+
+            }
+
+
+            submitButton.disabled = true;
+
+
+            const result =
+                await supabaseClient
+                    .from("comments")
+                    .insert({
+
+                        author_name:
+                            authorName,
+
+                        content:
+                            commentText,
+
+                        poem_id:
+                            articleId
+
+                    });
+
+
+            if (result.error) {
+
+                console.error(
+                    "Yorum gönderme hatası:",
+                    result.error
+                );
+
+
+                message.textContent =
+                    "Yorum gönderilemedi. Lütfen tekrar deneyin.";
+
+
+                submitButton.disabled = false;
+
+
+                return;
+
+            }
+
+
+            message.textContent =
+                "Yorumunuz yayınlandı! ❤️";
+
+
+            document
+                .getElementById("commentForm")
+                .reset();
+
+
+            await loadComments();
+
+
+            submitButton.disabled = false;
+
+        }
+    );
+
+
+/* =========================
+   BEĞENİLERİ GETİR
+========================= */
+
+async function loadLikes() {
+
+    const likeCount =
+        document.getElementById(
+            "likeCount"
+        );
+
+
+    const result =
+        await supabaseClient
+            .from("likes")
+            .select(
+                "id",
+                {
+                    count: "exact",
+                    head: true
+                }
+            )
+            .eq(
+                "poem_id",
+                articleId
+            );
+
+
+    if (result.error) {
+
+        console.error(
+            "Beğeni hatası:",
+            result.error
+        );
+
+
+        return;
+
+    }
+
+
+    likeCount.textContent =
+        result.count || 0;
+
+}
+
+
+/* =========================
+   BEĞENİ GÖNDER
+========================= */
+
+document
+    .getElementById("likeButton")
+    .addEventListener(
+        "click",
+        async function() {
+
+
+            const button =
+                document.getElementById(
+                    "likeButton"
+                );
+
+
+            const message =
+                document.getElementById(
+                    "likeMessage"
+                );
+
+
+            button.disabled = true;
+
+
+            const result =
+                await supabaseClient
+                    .from("likes")
+                    .insert({
+
+                        poem_id:
+                            articleId
+
+                    });
+
+
+            if (result.error) {
+
+                console.error(
+                    "Beğeni gönderme hatası:",
+                    result.error
+                );
+
+
+                message.textContent =
+                    "Beğeni gönderilemedi.";
+
+
+                button.disabled = false;
+
+
+                return;
+
+            }
+
+
+            message.textContent =
+                "Beğendiğin için teşekkürler! ❤️";
+
+
+            await loadLikes();
+
+
+            setTimeout(
+                function() {
+
+                    button.disabled = false;
+
+                },
+                1000
+            );
+
+        }
+    );
+
+
+/* =========================
+   SAYFA AÇILINCA
+========================= */
+
+loadComments();
+
+loadLikes();
+
+
+</script>
+
 
 </body>
 </html>
