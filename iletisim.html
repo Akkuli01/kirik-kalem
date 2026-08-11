@@ -61,12 +61,15 @@
             color: #d8b98a;
         }
 
-        /* TEMA BUTONU */
+        /* =========================
+           TEMA BUTONU - SAĞ ÜST
+        ========================= */
 
         #themeButton {
             position: fixed;
             right: 20px;
-            bottom: 20px;
+            top: 20px;
+            bottom: auto;
             width: 48px;
             height: 48px;
             border: none;
@@ -85,7 +88,9 @@
             transform: scale(1.08);
         }
 
-        /* İLETİŞİM */
+        /* =========================
+           İLETİŞİM
+        ========================= */
 
         .contact-container {
             max-width: 800px;
@@ -125,7 +130,9 @@
             color: #5f554e;
         }
 
-        /* FORM */
+        /* =========================
+           FORM
+        ========================= */
 
         .form-group {
             margin-bottom: 18px;
@@ -161,7 +168,9 @@
             border-color: #8a6f55;
         }
 
-        /* GÖNDER BUTONU */
+        /* =========================
+           GÖNDER BUTONU
+        ========================= */
 
         .submit-button {
             padding: 12px 24px;
@@ -190,7 +199,9 @@
             min-height: 24px;
         }
 
-        /* BİLGİ KUTUSU */
+        /* =========================
+           BİLGİ KUTUSU
+        ========================= */
 
         .info-box {
             margin-top: 30px;
@@ -205,7 +216,9 @@
             margin-bottom: 8px;
         }
 
-        /* GERİ DÖN */
+        /* =========================
+           GERİ DÖN
+        ========================= */
 
         .back-button {
             display: block;
@@ -223,7 +236,9 @@
             background: #57483d;
         }
 
-        /* FOOTER */
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
             background: #211d1a;
@@ -233,7 +248,9 @@
             margin-top: 70px;
         }
 
-        /* KARANLIK MOD */
+        /* =========================
+           KARANLIK MOD
+        ========================= */
 
         body.dark-mode {
             background: #171513;
@@ -293,7 +310,9 @@
             background: #65574c;
         }
 
-        /* TELEFON */
+        /* =========================
+           TELEFON
+        ========================= */
 
         @media (max-width: 600px) {
 
@@ -323,9 +342,12 @@
                 padding: 25px;
             }
 
+            /* TELEFONDA DA SAĞ ÜST */
+
             #themeButton {
                 right: 15px;
-                bottom: 15px;
+                top: 15px;
+                bottom: auto;
                 width: 45px;
                 height: 45px;
                 font-size: 20px;
@@ -364,6 +386,10 @@
     <a href="iletisim.html">Bana Ulaşın</a>
 
 </nav>
+
+<!-- =========================
+     TEMA BUTONU
+========================= -->
 
 <button
     id="themeButton"
@@ -689,8 +715,6 @@ document
             formMessage.textContent = "";
 
 
-            /* BOŞ ALAN */
-
             if (
                 !name ||
                 !email ||
@@ -706,8 +730,6 @@ document
             }
 
 
-            /* E-POSTA */
-
             if (!isValidEmail(email)) {
 
                 formMessage.textContent =
@@ -717,8 +739,6 @@ document
 
             }
 
-
-            /* YASAKLI İÇERİK */
 
             if (
                 containsBannedContent(name) ||
@@ -733,8 +753,6 @@ document
 
             }
 
-
-            /* E-POSTA HAZIRLA */
 
             const mailSubject =
                 encodeURIComponent(subject);
@@ -758,8 +776,6 @@ document
                 mailBody;
 
 
-            /* BUTONU KİLİTLE */
-
             submitButton.disabled = true;
 
             submitButton.textContent =
@@ -769,13 +785,9 @@ document
                 "E-posta uygulamanız açılıyor...";
 
 
-            /* E-POSTA UYGULAMASINI AÇ */
-
             window.location.href =
                 mailtoLink;
 
-
-            /* BUTONU TEKRAR AKTİFLEŞTİR */
 
             setTimeout(
                 function() {
