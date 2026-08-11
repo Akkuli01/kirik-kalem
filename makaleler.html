@@ -20,6 +20,7 @@
             background: #f4efe7;
             color: #29231f;
             line-height: 1.8;
+            transition: background 0.3s, color 0.3s;
         }
 
         header {
@@ -59,6 +60,32 @@
             color: #d8b98a;
         }
 
+        /* =========================
+           KARANLIK MOD BUTONU
+        ========================= */
+
+        #darkModeButton {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 2000;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            background: #332c27;
+            color: white;
+            font-size: 21px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        #darkModeButton:hover {
+            background: #57483d;
+            transform: scale(1.08);
+        }
+
         .article-container {
             max-width: 800px;
             margin: 60px auto;
@@ -92,6 +119,7 @@
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             font-size: 18px;
+            transition: background 0.3s, color 0.3s;
         }
 
         .article p {
@@ -113,6 +141,7 @@
             background: white;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: background 0.3s, color 0.3s;
         }
 
         .comments-section h3 {
@@ -155,6 +184,8 @@
             border-radius: 6px;
             font-family: Georgia, serif;
             font-size: 16px;
+            background: white;
+            color: #29231f;
         }
 
         #commentForm textarea {
@@ -227,6 +258,76 @@
         }
 
         /* =========================
+           KARANLIK MOD
+        ========================= */
+
+        body.dark-mode {
+            background: #171513;
+            color: #e8e1d9;
+        }
+
+        body.dark-mode .article-header h2 {
+            color: #f1ebe4;
+        }
+
+        body.dark-mode .category {
+            color: #c4a985;
+        }
+
+        body.dark-mode .date {
+            color: #aaa098;
+        }
+
+        body.dark-mode .article {
+            background: #25211e;
+            color: #e8e1d9;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        body.dark-mode .comments-section {
+            background: #25211e;
+            color: #e8e1d9;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        body.dark-mode #commentForm input,
+        body.dark-mode #commentForm textarea {
+            background: #312c28;
+            color: #f1ebe4;
+            border-color: #514941;
+        }
+
+        body.dark-mode #commentForm input::placeholder,
+        body.dark-mode #commentForm textarea::placeholder {
+            color: #aaa098;
+        }
+
+        body.dark-mode .comment {
+            border-top-color: #48413b;
+        }
+
+        body.dark-mode .comment-date {
+            color: #aaa098;
+        }
+
+        body.dark-mode .back-button {
+            background: #51463d;
+        }
+
+        body.dark-mode .back-button:hover {
+            background: #65574c;
+        }
+
+        body.dark-mode #darkModeButton {
+            background: #e0d7ce;
+            color: #211d1a;
+        }
+
+        body.dark-mode #darkModeButton:hover {
+            background: #ffffff;
+        }
+
+        /* =========================
            TELEFON
         ========================= */
 
@@ -268,9 +369,17 @@
             .comments-section h3 {
                 font-size: 24px;
             }
+
+            #darkModeButton {
+                right: 15px;
+                bottom: 15px;
+                width: 45px;
+                height: 45px;
+            }
         }
 
     </style>
+
 </head>
 
 
@@ -321,6 +430,13 @@
     </a>
 
 </nav>
+
+
+<!-- KARANLIK MOD -->
+
+<button id="darkModeButton" type="button" aria-label="Karanlık modu değiştir">
+    🌙
+</button>
 
 
 <!-- MAKALE -->
@@ -463,6 +579,65 @@
 
 <script>
 
+/* =========================
+   KARANLIK MOD
+========================= */
+
+const darkModeButton =
+    document.getElementById("darkModeButton");
+
+
+function applyDarkMode(isDark) {
+
+    document.body.classList.toggle(
+        "dark-mode",
+        isDark
+    );
+
+    darkModeButton.textContent =
+        isDark ? "☀️" : "🌙";
+
+    darkModeButton.setAttribute(
+        "aria-label",
+        isDark
+            ? "Aydınlık moda geç"
+            : "Karanlık moda geç"
+    );
+
+}
+
+
+/* Daha önce seçilen modu yükle */
+
+const savedTheme =
+    localStorage.getItem("kirilKalemTheme");
+
+applyDarkMode(
+    savedTheme === "dark"
+);
+
+
+/* Butona basıldığında */
+
+darkModeButton.addEventListener(
+    "click",
+    function() {
+
+        const isDark =
+            document.body.classList.toggle(
+                "dark-mode"
+            );
+
+        localStorage.setItem(
+            "kirilKalemTheme",
+            isDark ? "dark" : "light"
+        );
+
+        applyDarkMode(isDark);
+
+    }
+);
+
 
 /* =========================
    SUPABASE AYARLARI
@@ -542,7 +717,6 @@ function containsBannedContent(text) {
     const normalized =
         normalizeText(text);
 
-
     const words =
         normalized.split(" ");
 
@@ -552,11 +726,6 @@ function containsBannedContent(text) {
         const normalizedBannedWord =
             normalizeText(word);
 
-
-        /*
-         * Tek kelimelik yasaklı kelimeleri
-         * kontrol eder.
-         */
 
         if (
             normalizedBannedWord.split(" ").length === 1
@@ -568,11 +737,6 @@ function containsBannedContent(text) {
 
         }
 
-
-        /*
-         * Birden fazla kelimeden oluşan
-         * yasaklı ifadeleri kontrol eder.
-         */
 
         return normalized.includes(
             normalizedBannedWord
@@ -649,7 +813,6 @@ async function loadComments() {
 
 
     data.forEach(function(comment) {
-
 
         const commentElement =
             document.createElement("div");
@@ -977,7 +1140,6 @@ document
 loadComments();
 
 loadLikes();
-
 
 </script>
 
