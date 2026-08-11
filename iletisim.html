@@ -16,11 +16,16 @@
             padding: 0;
         }
 
+        /* =========================
+           AÇIK TEMA
+        ========================= */
+
         body {
             font-family: Georgia, "Times New Roman", serif;
             background: #f4efe7;
             color: #29231f;
             line-height: 1.8;
+            transition: background 0.3s, color 0.3s;
         }
 
         header {
@@ -60,6 +65,36 @@
             color: #d8b98a;
         }
 
+        /* =========================
+           KARANLIK MOD BUTONU
+        ========================= */
+
+        #themeButton {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            background: #332c27;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 2000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        #themeButton:hover {
+            background: #57483d;
+            transform: scale(1.08);
+        }
+
+        /* =========================
+           İLETİŞİM
+        ========================= */
+
         .contact-container {
             max-width: 800px;
             margin: 60px auto;
@@ -85,6 +120,7 @@
             padding: 45px;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: background 0.3s, box-shadow 0.3s;
         }
 
         .contact-box h3 {
@@ -116,6 +152,8 @@
             font-family: Georgia, "Times New Roman", serif;
             font-size: 16px;
             background: #fff;
+            color: #29231f;
+            transition: background 0.3s, color 0.3s, border 0.3s;
         }
 
         .form-group textarea {
@@ -160,6 +198,7 @@
             padding: 20px;
             background: #f4efe7;
             border-radius: 8px;
+            transition: background 0.3s;
         }
 
         .info-box h3 {
@@ -190,6 +229,62 @@
             margin-top: 70px;
         }
 
+        /* =========================
+           KARANLIK MOD
+        ========================= */
+
+        body.dark-mode {
+            background: #171513;
+            color: #e8e1d9;
+        }
+
+        body.dark-mode .contact-header p {
+            color: #b9aea3;
+        }
+
+        body.dark-mode .contact-box {
+            background: #24211e;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        body.dark-mode .contact-box > p {
+            color: #c8beb5;
+        }
+
+        body.dark-mode .form-group input,
+        body.dark-mode .form-group textarea {
+            background: #302c28;
+            color: #f1ebe5;
+            border-color: #514a43;
+        }
+
+        body.dark-mode .form-group input::placeholder,
+        body.dark-mode .form-group textarea::placeholder {
+            color: #a99e94;
+        }
+
+        body.dark-mode .form-group input:focus,
+        body.dark-mode .form-group textarea:focus {
+            border-color: #b79a78;
+        }
+
+        body.dark-mode .info-box {
+            background: #302c28;
+        }
+
+        body.dark-mode #themeButton {
+            background: #e8dfd5;
+            color: #29231f;
+        }
+
+        body.dark-mode #themeButton:hover {
+            background: #d8c8b8;
+        }
+
+        /* =========================
+           TELEFON
+        ========================= */
+
         @media (max-width: 600px) {
 
             header h1 {
@@ -216,6 +311,14 @@
 
             .contact-box {
                 padding: 25px;
+            }
+
+            #themeButton {
+                right: 15px;
+                bottom: 15px;
+                width: 44px;
+                height: 44px;
+                font-size: 20px;
             }
 
         }
@@ -272,6 +375,13 @@
     </a>
 
 </nav>
+
+
+<!-- KARANLIK MOD -->
+
+<button id="themeButton" aria-label="Tema değiştir">
+    🌙
+</button>
 
 
 <!-- İLETİŞİM -->
@@ -429,8 +539,95 @@
 <script>
 
     /* =====================================================
+       KARANLIK MOD
+    ===================================================== */
+
+    const themeButton =
+        document.getElementById("themeButton");
+
+
+    function updateThemeButton() {
+
+        if (
+            document.body.classList.contains("dark-mode")
+        ) {
+
+            themeButton.textContent = "☀️";
+            themeButton.setAttribute(
+                "aria-label",
+                "Açık temaya geç"
+            );
+
+        } else {
+
+            themeButton.textContent = "🌙";
+            themeButton.setAttribute(
+                "aria-label",
+                "Karanlık temaya geç"
+            );
+
+        }
+
+    }
+
+
+    /* KAYDEDİLMİŞ TEMAYI YÜKLE */
+
+    const savedTheme =
+        localStorage.getItem("kirikKalemTheme");
+
+
+    if (savedTheme === "dark") {
+
+        document.body.classList.add("dark-mode");
+
+    }
+
+
+    updateThemeButton();
+
+
+    /* TEMA DEĞİŞTİR */
+
+    themeButton.addEventListener(
+        "click",
+        function() {
+
+            document.body.classList.toggle(
+                "dark-mode"
+            );
+
+
+            if (
+                document.body.classList.contains(
+                    "dark-mode"
+                )
+            ) {
+
+                localStorage.setItem(
+                    "kirikKalemTheme",
+                    "dark"
+                );
+
+            } else {
+
+                localStorage.setItem(
+                    "kirikKalemTheme",
+                    "light"
+                );
+
+            }
+
+
+            updateThemeButton();
+
+        }
+    );
+
+
+    /* =====================================================
        KIRIK KALEM - İLETİŞİM FORMU
-       ===================================================== */
+    ===================================================== */
 
 
     /* =========================
@@ -576,14 +773,10 @@
                     );
 
 
-                /* MESAJI TEMİZLE */
-
                 formMessage.textContent = "";
 
 
-                /* =========================
-                   BOŞ ALAN KONTROLÜ
-                ========================= */
+                /* BOŞ ALAN KONTROLÜ */
 
                 if (
                     !name ||
@@ -600,9 +793,7 @@
                 }
 
 
-                /* =========================
-                   E-POSTA KONTROLÜ
-                ========================= */
+                /* E-POSTA KONTROLÜ */
 
                 if (
                     !isValidEmail(email)
@@ -616,9 +807,7 @@
                 }
 
 
-                /* =========================
-                   YASAKLI KELİME KONTROLÜ
-                ========================= */
+                /* YASAKLI KELİME KONTROLÜ */
 
                 if (
                     containsBannedContent(name) ||
@@ -634,9 +823,7 @@
                 }
 
 
-                /* =========================
-                   E-POSTA HAZIRLA
-                ========================= */
+                /* E-POSTA HAZIRLA */
 
                 const mailSubject =
                     encodeURIComponent(
@@ -668,9 +855,7 @@
                     mailBody;
 
 
-                /* =========================
-                   BUTONU KİLİTLE
-                ========================= */
+                /* BUTONU KİLİTLE */
 
                 submitButton.disabled = true;
 
@@ -682,9 +867,7 @@
                     "E-posta uygulamanız açılıyor...";
 
 
-                /* =========================
-                   E-POSTA UYGULAMASINI AÇ
-                ========================= */
+                /* E-POSTA UYGULAMASINI AÇ */
 
                 window.location.href =
                     mailtoLink;
