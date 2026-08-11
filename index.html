@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
 
 <meta charset="UTF-8">
@@ -81,22 +82,49 @@ nav a:hover {
 }
 
 
-/* KARANLIK MOD BUTONU */
+/* =========================
+   SAĞ ÜST YUVARLAK
+   KARANLIK MOD BUTONU
+========================= */
 
 .dark-mode-button {
-    padding: 8px 13px;
-    margin-left: 8px;
-    border: 1px solid #8a6f55;
-    border-radius: 6px;
-    background: transparent;
+    position: fixed;
+    top: 18px;
+    right: 20px;
+
+    width: 48px;
+    height: 48px;
+
+    padding: 0;
+    margin: 0;
+
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 50%;
+
+    background: #332c27;
     color: white;
-    font-family: Georgia, "Times New Roman", serif;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 21px;
     cursor: pointer;
-    font-size: 14px;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+
+    transition:
+        background 0.3s,
+        transform 0.3s,
+        box-shadow 0.3s;
+
+    z-index: 2000;
 }
 
 .dark-mode-button:hover {
     background: #57483d;
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
 }
 
 
@@ -218,7 +246,10 @@ nav a:hover {
     padding: 32px;
     border-radius: 12px;
     box-shadow: 0 5px 18px rgba(0,0,0,0.08);
-    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    transition:
+        transform 0.3s,
+        box-shadow 0.3s,
+        background 0.3s;
 }
 
 .poem-card:hover {
@@ -379,7 +410,7 @@ footer {
 
 
 /* =========================
-   🌙 KARANLIK MOD
+   KARANLIK MOD
 ========================= */
 
 body.dark-mode {
@@ -437,6 +468,19 @@ body.dark-mode #searchResult {
 }
 
 
+/* Karanlık modda yuvarlak buton */
+
+body.dark-mode .dark-mode-button {
+    background: #eeeeee;
+    color: #211d1a;
+    border-color: #eeeeee;
+}
+
+body.dark-mode .dark-mode-button:hover {
+    background: #d8d8d8;
+}
+
+
 /* =========================
    TELEFON
 ========================= */
@@ -466,7 +510,11 @@ body.dark-mode #searchResult {
     }
 
     .dark-mode-button {
-        margin-top: 6px;
+        top: 12px;
+        right: 12px;
+        width: 44px;
+        height: 44px;
+        font-size: 19px;
     }
 
     .hero {
@@ -545,15 +593,20 @@ body.dark-mode #searchResult {
     <a href="#hakkimda">Hakkımda</a>
     <a href="iletisim.html">Bana Ulaşın</a>
 
-    <button
-        class="dark-mode-button"
-        id="darkModeButton"
-        onclick="toggleDarkMode()"
-    >
-        🌙 Karanlık Mod
-    </button>
-
 </nav>
+
+
+<!-- SAĞ ÜST KARANLIK MOD BUTONU -->
+
+<button
+    class="dark-mode-button"
+    id="darkModeButton"
+    onclick="toggleDarkMode()"
+    aria-label="Karanlık modu değiştir"
+    title="Karanlık / Aydınlık Mod"
+>
+    🌙
+</button>
 
 
 <!-- ARAMA -->
@@ -884,13 +937,15 @@ function updateDarkModeButton() {
 
     if (isDark) {
 
-        button.textContent =
-            "☀️ Aydınlık Mod";
+        button.textContent = "☀️";
+
+        button.title = "Aydınlık Moda Geç";
 
     } else {
 
-        button.textContent =
-            "🌙 Karanlık Mod";
+        button.textContent = "🌙";
+
+        button.title = "Karanlık Moda Geç";
 
     }
 
