@@ -10,15 +10,15 @@
 
     <style>
 
+        /* =========================
+           TEMEL
+        ========================= */
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-
-        /* =========================
-           AÇIK TEMA
-        ========================= */
 
         body {
             font-family: Georgia, "Times New Roman", serif;
@@ -27,6 +27,11 @@
             line-height: 1.8;
             transition: background 0.3s, color 0.3s;
         }
+
+
+        /* =========================
+           HEADER
+        ========================= */
 
         header {
             background: #211d1a;
@@ -43,6 +48,11 @@
         header p {
             color: #d6c7b8;
         }
+
+
+        /* =========================
+           MENÜ
+        ========================= */
 
         nav {
             background: #332c27;
@@ -65,8 +75,9 @@
             color: #d8b98a;
         }
 
+
         /* =========================
-           KARANLIK MOD BUTONU
+           TEMA BUTONU
         ========================= */
 
         #themeButton {
@@ -90,6 +101,7 @@
             background: #57483d;
             transform: scale(1.08);
         }
+
 
         /* =========================
            İLETİŞİM
@@ -133,6 +145,11 @@
             color: #5f554e;
         }
 
+
+        /* =========================
+           FORM
+        ========================= */
+
         .form-group {
             margin-bottom: 18px;
         }
@@ -153,7 +170,9 @@
             font-size: 16px;
             background: #fff;
             color: #29231f;
-            transition: background 0.3s, color 0.3s, border 0.3s;
+            transition: background 0.3s,
+                        color 0.3s,
+                        border 0.3s;
         }
 
         .form-group textarea {
@@ -166,6 +185,11 @@
             outline: none;
             border-color: #8a6f55;
         }
+
+
+        /* =========================
+           GÖNDER BUTONU
+        ========================= */
 
         .submit-button {
             padding: 12px 24px;
@@ -193,6 +217,11 @@
             font-size: 15px;
         }
 
+
+        /* =========================
+           BİLGİ KUTUSU
+        ========================= */
+
         .info-box {
             margin-top: 30px;
             padding: 20px;
@@ -205,6 +234,11 @@
             font-size: 21px;
             margin-bottom: 8px;
         }
+
+
+        /* =========================
+           GERİ DÖN
+        ========================= */
 
         .back-button {
             display: block;
@@ -221,6 +255,11 @@
             background: #57483d;
         }
 
+
+        /* =========================
+           FOOTER
+        ========================= */
+
         footer {
             background: #211d1a;
             color: #cfc3b8;
@@ -228,6 +267,7 @@
             padding: 25px;
             margin-top: 70px;
         }
+
 
         /* =========================
            KARANLIK MOD
@@ -281,6 +321,7 @@
             background: #d8c8b8;
         }
 
+
         /* =========================
            TELEFON
         ========================= */
@@ -331,7 +372,9 @@
 <body>
 
 
-<!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
@@ -342,7 +385,9 @@
 </header>
 
 
-<!-- MENÜ -->
+<!-- =========================
+     MENÜ
+========================= -->
 
 <nav>
 
@@ -377,14 +422,21 @@
 </nav>
 
 
-<!-- KARANLIK MOD -->
+<!-- =========================
+     TEMA BUTONU
+========================= -->
 
-<button id="themeButton" aria-label="Tema değiştir">
+<button
+    id="themeButton"
+    aria-label="Tema değiştir"
+>
     🌙
 </button>
 
 
-<!-- İLETİŞİM -->
+<!-- =========================
+     İLETİŞİM
+========================= -->
 
 <main class="contact-container">
 
@@ -487,6 +539,8 @@
             </div>
 
 
+            <!-- GÖNDER -->
+
             <button
                 type="submit"
                 class="submit-button"
@@ -502,7 +556,9 @@
         </form>
 
 
-        <!-- BİLGİ -->
+        <!-- =========================
+             BİLGİ
+        ========================= -->
 
         <div class="info-box">
 
@@ -519,7 +575,12 @@
     </div>
 
 
-    <a href="index.html" class="back-button">
+    <!-- GERİ DÖN -->
+
+    <a
+        href="index.html"
+        class="back-button"
+    >
         ← Ana Sayfaya Dön
     </a>
 
@@ -527,7 +588,9 @@
 </main>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -536,359 +599,396 @@
 </footer>
 
 
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
 
-    /* =====================================================
-       KARANLIK MOD
-    ===================================================== */
 
-    const themeButton =
-        document.getElementById("themeButton");
+/* =====================================================
+   KARANLIK MOD
+===================================================== */
+
+const themeButton =
+    document.getElementById("themeButton");
 
 
-    function updateThemeButton() {
+function updateThemeButton() {
+
+    if (
+        document.body.classList.contains("dark-mode")
+    ) {
+
+        themeButton.textContent = "☀️";
+
+        themeButton.setAttribute(
+            "aria-label",
+            "Açık temaya geç"
+        );
+
+    } else {
+
+        themeButton.textContent = "🌙";
+
+        themeButton.setAttribute(
+            "aria-label",
+            "Karanlık temaya geç"
+        );
+
+    }
+
+}
+
+
+/* KAYDEDİLMİŞ TEMAYI YÜKLE */
+
+const savedTheme =
+    localStorage.getItem("kirikKalemTheme");
+
+
+if (savedTheme === "dark") {
+
+    document.body.classList.add("dark-mode");
+
+}
+
+
+updateThemeButton();
+
+
+/* TEMA DEĞİŞTİR */
+
+themeButton.addEventListener(
+    "click",
+    function() {
+
+        document.body.classList.toggle(
+            "dark-mode"
+        );
+
 
         if (
-            document.body.classList.contains("dark-mode")
+            document.body.classList.contains(
+                "dark-mode"
+            )
         ) {
 
-            themeButton.textContent = "☀️";
-            themeButton.setAttribute(
-                "aria-label",
-                "Açık temaya geç"
+            localStorage.setItem(
+                "kirikKalemTheme",
+                "dark"
             );
 
         } else {
 
-            themeButton.textContent = "🌙";
-            themeButton.setAttribute(
-                "aria-label",
-                "Karanlık temaya geç"
+            localStorage.setItem(
+                "kirikKalemTheme",
+                "light"
             );
 
         }
 
-    }
 
-
-    /* KAYDEDİLMİŞ TEMAYI YÜKLE */
-
-    const savedTheme =
-        localStorage.getItem("kirikKalemTheme");
-
-
-    if (savedTheme === "dark") {
-
-        document.body.classList.add("dark-mode");
+        updateThemeButton();
 
     }
+);
 
 
-    updateThemeButton();
+/* =====================================================
+   KIRIK KALEM - İLETİŞİM FORMU
+===================================================== */
 
 
-    /* TEMA DEĞİŞTİR */
+/* =========================
+   E-POSTA ADRESİ
+========================= */
 
-    themeButton.addEventListener(
-        "click",
-        function() {
-
-            document.body.classList.toggle(
-                "dark-mode"
-            );
+const contactEmail =
+    "kirikkalem01@hotmail.com";
 
 
-            if (
-                document.body.classList.contains(
-                    "dark-mode"
-                )
-            ) {
+/* =========================
+   YASAKLI KELİMELER
+========================= */
 
-                localStorage.setItem(
-                    "kirikKalemTheme",
-                    "dark"
-                );
+const bannedWords = [
 
-            } else {
+    "mal",
+    "amk",
+    "aq",
+    "orospu",
+    "piç",
+    "siktir",
+    "sikik",
+    "yarrak",
+    "ibne",
+    "göt",
+    "salak",
+    "aptal",
+    "gerizekalı",
+    "şerefsiz",
+    "haysiyetsiz",
+    "oe",
+    "orospu çocuğu"
 
-                localStorage.setItem(
-                    "kirikKalemTheme",
-                    "light"
-                );
-
-            }
-
-
-            updateThemeButton();
-
-        }
-    );
-
-
-    /* =====================================================
-       KIRIK KALEM - İLETİŞİM FORMU
-    ===================================================== */
+];
 
 
-    /* =========================
-       E-POSTA ADRESİ
-    ========================= */
+/* =========================
+   METİN NORMALLEŞTİRME
+========================= */
 
-    const contactEmail =
-        "kirikkalem01@hotmail.com";
+function normalizeText(text) {
 
+    return text
+        .toLocaleLowerCase("tr-TR")
+        .replace(/[^a-zçğıöşü0-9\s]/gi, " ")
+        .replace(/\s+/g, " ")
+        .trim();
 
-    /* =========================
-       YASAKLI KELİMELER
-    ========================= */
-
-    const bannedWords = [
-
-        "mal",
-        "amk",
-        "aq",
-        "orospu",
-        "piç",
-        "siktir",
-        "sikik",
-        "yarrak",
-        "ibne",
-        "göt",
-        "salak",
-        "aptal",
-        "gerizekalı",
-        "şerefsiz",
-        "haysiyetsiz",
-        "oe",
-        "orospu çocuğu"
-
-    ];
+}
 
 
-    /* =========================
-       METİN NORMALLEŞTİRME
-    ========================= */
+/* =========================
+   YASAKLI İÇERİK KONTROLÜ
+========================= */
 
-    function normalizeText(text) {
+function containsBannedContent(text) {
 
-        return text
-            .toLocaleLowerCase("tr-TR")
-            .replace(/[^a-zçğıöşü0-9\s]/gi, " ")
-            .replace(/\s+/g, " ")
-            .trim();
+    const normalized =
+        normalizeText(text);
 
-    }
+    const words =
+        normalized.split(" ");
 
 
-    /* =========================
-       YASAKLI İÇERİK KONTROLÜ
-    ========================= */
+    return bannedWords.some(function(word) {
 
-    function containsBannedContent(text) {
-
-        const normalized =
-            normalizeText(text);
-
-        const words =
-            normalized.split(" ");
+        const normalizedWord =
+            normalizeText(word);
 
 
-        return bannedWords.some(function(word) {
+        /* TEK KELİME */
 
-            const normalizedWord =
-                normalizeText(word);
+        if (
+            !normalizedWord.includes(" ")
+        ) {
 
             return words.includes(
                 normalizedWord
             );
 
-        });
-
-    }
+        }
 
 
-    /* =========================
-       E-POSTA KONTROLÜ
-    ========================= */
+        /* BİRDEN FAZLA KELİME */
 
-    function isValidEmail(email) {
-
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
-            email
+        return normalized.includes(
+            normalizedWord
         );
 
-    }
+    });
+
+}
 
 
-    /* =========================
-       FORM
-    ========================= */
+/* =========================
+   E-POSTA KONTROLÜ
+========================= */
 
-    document
-        .getElementById("contactForm")
-        .addEventListener(
-            "submit",
-            function(event) {
+function isValidEmail(email) {
 
-                event.preventDefault();
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+        email
+    );
 
-
-                const name =
-                    document
-                        .getElementById("name")
-                        .value
-                        .trim();
+}
 
 
-                const email =
-                    document
-                        .getElementById("email")
-                        .value
-                        .trim();
+/* =====================================================
+   FORM
+===================================================== */
+
+document
+    .getElementById("contactForm")
+    .addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
 
 
-                const subject =
-                    document
-                        .getElementById("subject")
-                        .value
-                        .trim();
+            const name =
+                document
+                    .getElementById("name")
+                    .value
+                    .trim();
 
 
-                const message =
-                    document
-                        .getElementById("message")
-                        .value
-                        .trim();
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim();
 
 
-                const formMessage =
-                    document.getElementById(
-                        "formMessage"
-                    );
+            const subject =
+                document
+                    .getElementById("subject")
+                    .value
+                    .trim();
 
 
-                const submitButton =
-                    document.getElementById(
-                        "submitButton"
-                    );
+            const message =
+                document
+                    .getElementById("message")
+                    .value
+                    .trim();
 
 
-                formMessage.textContent = "";
-
-
-                /* BOŞ ALAN KONTROLÜ */
-
-                if (
-                    !name ||
-                    !email ||
-                    !subject ||
-                    !message
-                ) {
-
-                    formMessage.textContent =
-                        "Lütfen tüm alanları doldurun.";
-
-                    return;
-
-                }
-
-
-                /* E-POSTA KONTROLÜ */
-
-                if (
-                    !isValidEmail(email)
-                ) {
-
-                    formMessage.textContent =
-                        "Lütfen geçerli bir e-posta adresi girin.";
-
-                    return;
-
-                }
-
-
-                /* YASAKLI KELİME KONTROLÜ */
-
-                if (
-                    containsBannedContent(name) ||
-                    containsBannedContent(subject) ||
-                    containsBannedContent(message)
-                ) {
-
-                    formMessage.textContent =
-                        "Mesajınız topluluk kurallarımıza uygun değil. Küfür, hakaret ve aşırı argo kullanılamaz.";
-
-                    return;
-
-                }
-
-
-                /* E-POSTA HAZIRLA */
-
-                const mailSubject =
-                    encodeURIComponent(
-                        subject
-                    );
-
-
-                const mailBody =
-                    encodeURIComponent(
-
-                        "Ad / Rumuz: " +
-                        name +
-
-                        "\nE-posta: " +
-                        email +
-
-                        "\n\nMesaj:\n" +
-                        message
-
-                    );
-
-
-                const mailtoLink =
-                    "mailto:" +
-                    contactEmail +
-                    "?subject=" +
-                    mailSubject +
-                    "&body=" +
-                    mailBody;
-
-
-                /* BUTONU KİLİTLE */
-
-                submitButton.disabled = true;
-
-                submitButton.textContent =
-                    "📩 E-posta hazırlanıyor...";
-
-
-                formMessage.textContent =
-                    "E-posta uygulamanız açılıyor...";
-
-
-                /* E-POSTA UYGULAMASINI AÇ */
-
-                window.location.href =
-                    mailtoLink;
-
-
-                /* BUTONU TEKRAR AKTİFLEŞTİR */
-
-                setTimeout(
-                    function() {
-
-                        submitButton.disabled = false;
-
-                        submitButton.textContent =
-                            "📩 Mesaj Gönder";
-
-                    },
-                    3000
+            const formMessage =
+                document.getElementById(
+                    "formMessage"
                 );
 
+
+            const submitButton =
+                document.getElementById(
+                    "submitButton"
+                );
+
+
+            formMessage.textContent = "";
+
+
+            /* =========================
+               BOŞ ALAN KONTROLÜ
+            ========================= */
+
+            if (
+                !name ||
+                !email ||
+                !subject ||
+                !message
+            ) {
+
+                formMessage.textContent =
+                    "Lütfen tüm alanları doldurun.";
+
+                return;
+
             }
-        );
+
+
+            /* =========================
+               E-POSTA KONTROLÜ
+            ========================= */
+
+            if (
+                !isValidEmail(email)
+            ) {
+
+                formMessage.textContent =
+                    "Lütfen geçerli bir e-posta adresi girin.";
+
+                return;
+
+            }
+
+
+            /* =========================
+               YASAKLI KELİME KONTROLÜ
+            ========================= */
+
+            if (
+                containsBannedContent(name) ||
+                containsBannedContent(subject) ||
+                containsBannedContent(message)
+            ) {
+
+                formMessage.textContent =
+                    "Mesajınız topluluk kurallarımıza uygun değil. Küfür, hakaret ve aşırı argo kullanılamaz.";
+
+                return;
+
+            }
+
+
+            /* =========================
+               E-POSTA HAZIRLA
+            ========================= */
+
+            const mailSubject =
+                encodeURIComponent(
+                    subject
+                );
+
+
+            const mailBody =
+                encodeURIComponent(
+
+                    "Ad / Rumuz: " +
+                    name +
+
+                    "\nE-posta: " +
+                    email +
+
+                    "\n\nMesaj:\n" +
+                    message
+
+                );
+
+
+            const mailtoLink =
+                "mailto:" +
+                contactEmail +
+                "?subject=" +
+                mailSubject +
+                "&body=" +
+                mailBody;
+
+
+            /* =========================
+               BUTONU KİLİTLE
+            ========================= */
+
+            submitButton.disabled = true;
+
+            submitButton.textContent =
+                "📩 E-posta hazırlanıyor...";
+
+
+            formMessage.textContent =
+                "E-posta uygulamanız açılıyor...";
+
+
+            /* =========================
+               E-POSTA UYGULAMASINI AÇ
+            ========================= */
+
+            window.location.href =
+                mailtoLink;
+
+
+            /* =========================
+               BUTONU TEKRAR AKTİFLEŞTİR
+            ========================= */
+
+            setTimeout(
+                function() {
+
+                    submitButton.disabled = false;
+
+                    submitButton.textContent =
+                        "📩 Mesaj Gönder";
+
+                },
+                3000
+            );
+
+        }
+    );
 
 </script>
 
