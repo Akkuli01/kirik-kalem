@@ -40,6 +40,9 @@
             background: #332c27;
             text-align: center;
             padding: 14px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         nav a {
@@ -47,6 +50,7 @@
             text-decoration: none;
             margin: 0 15px;
             font-size: 16px;
+            transition: color 0.3s;
         }
 
         nav a:hover {
@@ -121,6 +125,7 @@
         }
 
         @media (max-width: 600px) {
+
             .poem {
                 padding: 25px;
                 font-size: 17px;
@@ -130,8 +135,13 @@
                 font-size: 32px;
             }
 
+            nav {
+                padding: 12px 5px;
+            }
+
             nav a {
-                margin: 0 7px;
+                display: inline-block;
+                margin: 4px 6px;
                 font-size: 14px;
             }
         }
@@ -141,17 +151,44 @@
 <body>
 
 <header>
+
     <h1>✍️ Kırık Kalem</h1>
-    <p>Akkuli'nin şiirleri</p>
+
+    <p>Akkuli'nin şiirleri ve sözleri</p>
+
 </header>
 
+
+<!-- MENÜ -->
+
 <nav>
-    <a href="index.html">Ana Sayfa</a>
-    <a href="index.html#siirler">Şiirler</a>
-    <a href="index.html#sozler">Sözler</a>
-    <a href="index.html#kategoriler">Kategoriler</a>
-    <a href="index.html#hakkimda">Hakkımda</a>
+
+    <a href="index.html">
+        Ana Sayfa
+    </a>
+
+    <a href="index.html#siirler">
+        Şiirler
+    </a>
+
+    <a href="index.html#sozler">
+        Sözler
+    </a>
+
+    <a href="makaleler.html">
+        Makaleler
+    </a>
+
+    <a href="index.html#kategoriler">
+        Kategoriler
+    </a>
+
+    <a href="index.html#hakkimda">
+        Hakkımda
+    </a>
+
 </nav>
+
 
 <main class="poem-container">
 
@@ -160,7 +197,7 @@
         <h2>Bir Garip Aşık</h2>
 
         <p class="author">
-            Yazan: Akkuli
+            Yazan: Akkuli 🖋️
         </p>
 
         <p class="date">
@@ -170,51 +207,70 @@
 
     </div>
 
+
     <div class="poem">
 
         <div class="stanza">
+
             Yazar kalemim aşk ile sözü,<br>
             Gönül dayanmıyor ise kalem neylesin?<br>
             Beklerim o yardan gelecek bir kısık sesi,<br>
             O yar ses vermiyor ise şu can neylesin?
+
         </div>
 
+
         <div class="stanza">
+
             Yine bahar geçti, yaşarım kışı,<br>
             Ne olur, Mevlam bilir bu garip işi.<br>
             Bekliyor gözü kapıda bu aciz kişi,<br>
             Eğer ki canan gelmiyor ise yol neylesin?
+
         </div>
 
+
         <div class="stanza">
+
             Bilmiyorum, az da olsa bu hasret diner mi?<br>
             Yoksa bir aşk uğrunda bu can biter mi?<br>
             Böyle ayrılığı hangi insan ister ki?<br>
             Dermansız derde düştüm ise tabip neylesin?
+
         </div>
 
+
         <div class="stanza">
+
             Bir garip âşığım, aşk ile yanarım,<br>
             Aşkın şarabına kandıkça kanarım.<br>
             Bilseler bu aşk ile nasıl yanarım,<br>
             Şu yangınımı söndürmeyen derya neylesin...
+
         </div>
 
+
         <div class="stanza">
+
             Sevmedim, ne yapsam da şu cihan-ı âlemi,<br>
             Ölümden beter imiş ayrı düşenlerin hâli.<br>
             Ahhh, ne olur gelsen yar, bir seher vakti,<br>
             Seni bir an görmeyen gözlerim neylesin?
+
         </div>
 
+
         <div class="stanza">
+
             Bırakmaz şu yakamı dert ile keder,<br>
             Acımadı hâlime, etti günden güne heder.<br>
             Hele sensizlik var ya, ölümden de beter,<br>
             Sensiz bu canı bu garip neylesin...
+
         </div>
 
     </div>
+
 
     <a href="index.html" class="back-button">
         ← Ana Sayfaya Dön
@@ -222,8 +278,11 @@
 
 </main>
 
+
 <footer>
+
     © 2026 Kırık Kalem - Akkuli
+
 </footer>
 
 </body>
