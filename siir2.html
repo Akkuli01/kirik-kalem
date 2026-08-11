@@ -3,257 +3,259 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Mehmed'im | Kırık Kalem</title>
+    <title>Mehmed'im | Kırık Kalem</title>
 
-<style>
+    <style>
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-body {
-    font-family: Georgia, "Times New Roman", serif;
-    background: #f4efe7;
-    color: #29231f;
-    line-height: 1.8;
-}
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #f4efe7;
+            color: #29231f;
+            line-height: 1.8;
+        }
 
-header {
-    background: #211d1a;
-    color: white;
-    text-align: center;
-    padding: 35px 20px;
-}
+        header {
+            background: #211d1a;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
 
-header h1 {
-    font-size: 38px;
-    margin-bottom: 5px;
-}
+        header h1 {
+            font-size: 38px;
+            margin-bottom: 5px;
+        }
 
-header p {
-    color: #d6c7b8;
-}
+        header p {
+            color: #d6c7b8;
+        }
 
-nav {
-    background: #332c27;
-    text-align: center;
-    padding: 14px;
-}
+        nav {
+            background: #332c27;
+            text-align: center;
+            padding: 14px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 16px;
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
 
-nav a:hover {
-    color: #d8b98a;
-}
+        nav a:hover {
+            color: #d8b98a;
+        }
 
-.poem-container {
-    max-width: 800px;
-    margin: 60px auto;
-    padding: 0 25px;
-}
+        .poem-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 25px;
+        }
 
-.poem-title {
-    text-align: center;
-    margin-bottom: 15px;
-}
+        .poem-title {
+            text-align: center;
+            margin-bottom: 15px;
+        }
 
-.poem-title h2 {
-    font-size: 40px;
-    margin-bottom: 10px;
-}
+        .poem-title h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
 
-.author {
-    color: #76695f;
-    font-style: italic;
-}
+        .author {
+            color: #76695f;
+            font-style: italic;
+        }
 
-.date {
-    color: #8b7c70;
-    font-size: 14px;
-    margin-top: 5px;
-}
+        .date {
+            color: #8b7c70;
+            font-size: 14px;
+            margin-top: 5px;
+        }
 
-.poem {
-    background: white;
-    padding: 45px;
-    margin-top: 35px;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.08);
-    font-size: 18px;
-}
+        .poem {
+            background: white;
+            padding: 45px;
+            margin-top: 35px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.08);
+            font-size: 18px;
+        }
 
-.stanza {
-    margin-bottom: 35px;
-}
+        .stanza {
+            margin-bottom: 35px;
+        }
 
-.stanza:last-child {
-    margin-bottom: 0;
-}
+        .stanza:last-child {
+            margin-bottom: 0;
+        }
 
+        /* =========================
+           YORUM VE BEĞENİ
+        ========================= */
 
-/* =========================
-   YORUM VE BEĞENİ
-========================= */
+        .comments-section {
+            max-width: 800px;
+            margin: 40px auto 0;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.08);
+        }
 
-.comments-section {
-    max-width: 800px;
-    margin: 40px auto 0;
-    padding: 30px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.08);
-}
+        .comments-section h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
 
-.comments-section h3 {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
+        #likeButton {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #8b3a3a;
+            color: white;
+            cursor: pointer;
+            font-family: Georgia, serif;
+            font-size: 16px;
+        }
 
-#likeButton {
-    padding: 11px 20px;
-    border: none;
-    border-radius: 6px;
-    background: #8b3a3a;
-    color: white;
-    cursor: pointer;
-    font-family: Georgia, serif;
-    font-size: 16px;
-}
+        #likeButton:hover {
+            background: #a64a4a;
+        }
 
-#likeButton:hover {
-    background: #a64a4a;
-}
+        #likeButton:disabled {
+            opacity: .7;
+            cursor: default;
+        }
 
-#likeButton:disabled {
-    opacity: .7;
-    cursor: default;
-}
+        #likeMessage,
+        #commentMessage {
+            margin: 15px 0;
+            font-size: 15px;
+        }
 
-#likeMessage,
-#commentMessage {
-    margin: 15px 0;
-    font-size: 15px;
-}
+        #commentForm input,
+        #commentForm textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #d6cec5;
+            border-radius: 6px;
+            font-family: Georgia, serif;
+            font-size: 16px;
+        }
 
-#commentForm input,
-#commentForm textarea {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 12px;
-    border: 1px solid #d6cec5;
-    border-radius: 6px;
-    font-family: Georgia, serif;
-    font-size: 16px;
-}
+        #commentForm textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
 
-#commentForm textarea {
-    min-height: 120px;
-    resize: vertical;
-}
+        #commentForm button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #332c27;
+            color: white;
+            cursor: pointer;
+            font-family: Georgia, serif;
+            font-size: 16px;
+        }
 
-#commentForm button {
-    padding: 11px 20px;
-    border: none;
-    border-radius: 6px;
-    background: #332c27;
-    color: white;
-    cursor: pointer;
-    font-family: Georgia, serif;
-    font-size: 16px;
-}
+        #commentForm button:hover {
+            background: #57483d;
+        }
 
-#commentForm button:hover {
-    background: #57483d;
-}
+        .comment {
+            border-top: 1px solid #e5ddd5;
+            padding: 20px 0;
+        }
 
-.comment {
-    border-top: 1px solid #e5ddd5;
-    padding: 20px 0;
-}
+        .comment-author {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
 
-.comment-author {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
+        .comment-date {
+            color: #8b7c70;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
 
-.comment-date {
-    color: #8b7c70;
-    font-size: 13px;
-    margin-bottom: 8px;
-}
+        .comment-text {
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
 
-.comment-text {
-    white-space: pre-wrap;
-    word-break: break-word;
-}
+        .back-button {
+            display: block;
+            width: fit-content;
+            margin: 35px auto 0;
+            padding: 10px 20px;
+            background: #332c27;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
 
-.back-button {
-    display: block;
-    width: fit-content;
-    margin: 35px auto 0;
-    padding: 10px 20px;
-    background: #332c27;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-}
+        .back-button:hover {
+            background: #57483d;
+        }
 
-.back-button:hover {
-    background: #57483d;
-}
+        footer {
+            background: #211d1a;
+            color: #cfc3b8;
+            text-align: center;
+            padding: 25px;
+            margin-top: 70px;
+        }
 
-footer {
-    background: #211d1a;
-    color: #cfc3b8;
-    text-align: center;
-    padding: 25px;
-    margin-top: 70px;
-}
+        /* =========================
+           TELEFON
+        ========================= */
 
+        @media (max-width: 600px) {
 
-/* =========================
-   TELEFON
-========================= */
+            .poem {
+                padding: 25px;
+                font-size: 17px;
+            }
 
-@media (max-width: 600px) {
+            .poem-title h2 {
+                font-size: 32px;
+            }
 
-    .poem {
-        padding: 25px;
-        font-size: 17px;
-    }
+            .comments-section {
+                margin-left: 15px;
+                margin-right: 15px;
+                padding: 20px;
+            }
 
-    .poem-title h2 {
-        font-size: 32px;
-    }
+            nav {
+                padding: 12px 5px;
+            }
 
-    .comments-section {
-        margin-left: 15px;
-        margin-right: 15px;
-        padding: 20px;
-    }
+            nav a {
+                display: inline-block;
+                margin: 4px 6px;
+                font-size: 14px;
+            }
+        }
 
-    nav {
-        padding: 12px 5px;
-    }
-
-    nav a {
-        display: inline-block;
-        margin: 4px 6px;
-        font-size: 14px;
-    }
-}
-
-</style>
+    </style>
 
 </head>
 
@@ -276,17 +278,29 @@ footer {
 
 <nav>
 
-    <a href="index.html#anasayfa">Ana Sayfa</a>
+    <a href="index.html#anasayfa">
+        Ana Sayfa
+    </a>
 
-    <a href="index.html#siirler">Şiirler</a>
+    <a href="index.html#siirler">
+        Şiirler
+    </a>
 
-    <a href="index.html#sozler">Sözler</a>
+    <a href="index.html#sozler">
+        Sözler
+    </a>
 
-    <a href="makaleler.html">Makaleler</a>
+    <a href="makaleler.html">
+        Makaleler
+    </a>
 
-    <a href="index.html#kategoriler">Kategoriler</a>
+    <a href="index.html#kategoriler">
+        Kategoriler
+    </a>
 
-    <a href="index.html#hakkimda">Hakkımda</a>
+    <a href="index.html#hakkimda">
+        Hakkımda
+    </a>
 
 </nav>
 
@@ -297,145 +311,146 @@ footer {
 
 <div class="poem-container">
 
-<div class="poem-title">
+    <div class="poem-title">
 
-    <h2>Mehmed'im</h2>
+        <h2>Mehmed'im</h2>
 
-    <p class="author">
-        Yazan: Akkuli 🖋️
-    </p>
+        <p class="author">
+            Yazan: Akkuli 🖋️
+        </p>
 
-    <p class="date">
-        İlk yazım tarihi: Bilinmiyor<br>
-        Arşiv tarihi: 9 Ağustos 2026
-    </p>
-
-</div>
-
-
-<div class="poem">
-
-<div class="stanza">
-
-Ey Mehmed'im! Ey Mehmed'im!<br><br>
-
-Haydi durma, yol senindir.<br>
-Ardına bakmadan yürü, yürü ki,<br>
-Şu koruduğun eşsiz vatan eserindir.
-
-</div>
-
-
-<div class="stanza">
-
-Yüce dağlarda şafak sökende,<br>
-Ana, baba hasretiyle yanıp tütende,<br>
-Her yiğidin sevdası saklıdır yürekte,<br>
-Memleket aşkıyla çarpan bu yürek senindir.
-
-</div>
-
-
-<div class="stanza">
-
-Ayak sesini duyan hainler, kaçışır inine.<br>
-Hiçbir müsamaha gösterilmez PKK itine.<br>
-Vururken Osmanlı tokadını yedi ceddine,<br>
-Rabbinden gelen nice zaferler senindir.
-
-</div>
-
-
-<div class="stanza">
-
-Bir sevda ki uğruna canlar verilmiş,<br>
-Bir cennet ki adına vatan denilmiş.<br>
-Unvanın Mehmetçik diye bilinmiş,<br>
-Gururla taşıdığın bu unvan senindir.
-
-</div>
-
-
-<div class="stanza">
-
-Büyük bir iman vermiş Yüce Rabbi,<br>
-Yoldaştır ona Rahmet Peygamberi.<br>
-Erlerin gönlünde yatar şehitlik mertebesi,<br>
-Mevla'dan gelen bu şeref senindir.
-
-</div>
-
-
-<div class="stanza">
-
-Ey Nazlı Hilal! Ey Nazlı Hilal!<br><br>
-
-Dalgalan şanınla, mavi gökler senindir.<br>
-Gölgenin vurduğu her yer,<br>
-Elbette ki bizlere vatan yeridir.
-
-</div>
-
-</div>
-
-
-<!-- BEĞENİ VE YORUMLAR -->
-
-<div class="comments-section">
-
-    <button id="likeButton">
-
-        ❤️ Beğen
-        <span id="likeCount">0</span>
-
-    </button>
-
-    <div id="likeMessage"></div>
-
-
-    <h3>💬 Yorumlar</h3>
-
-
-    <form id="commentForm">
-
-        <input
-            type="text"
-            id="authorName"
-            placeholder="Adınız veya rumuzunuz"
-            maxlength="50"
-            required
-        >
-
-        <textarea
-            id="commentText"
-            placeholder="Yorumunuzu yazın..."
-            maxlength="500"
-            required
-        ></textarea>
-
-
-        <button type="submit">
-            Yorum Gönder
-        </button>
-
-    </form>
-
-
-    <div id="commentMessage"></div>
-
-
-    <div id="commentsList">
-
-        <p>Yorumlar yükleniyor...</p>
+        <p class="date">
+            İlk yazım tarihi: Bilinmiyor<br>
+            Arşiv tarihi: 9 Ağustos 2026
+        </p>
 
     </div>
 
-</div>
+
+    <div class="poem">
+
+        <div class="stanza">
+
+            Ey Mehmed'im! Ey Mehmed'im!<br><br>
+
+            Haydi durma, yol senindir.<br>
+            Ardına bakmadan yürü, yürü ki,<br>
+            Şu koruduğun eşsiz vatan eserindir.
+
+        </div>
 
 
-<a href="index.html" class="back-button">
-    ← Ana Sayfaya Dön
-</a>
+        <div class="stanza">
+
+            Yüce dağlarda şafak sökende,<br>
+            Ana, baba hasretiyle yanıp tütende,<br>
+            Her yiğidin sevdası saklıdır yürekte,<br>
+            Memleket aşkıyla çarpan bu yürek senindir.
+
+        </div>
+
+
+        <div class="stanza">
+
+            Ayak sesini duyan hainler, kaçışır inine.<br>
+            Hiçbir müsamaha gösterilmez PKK itine.<br>
+            Vururken Osmanlı tokadını yedi ceddine,<br>
+            Rabbinden gelen nice zaferler senindir.
+
+        </div>
+
+
+        <div class="stanza">
+
+            Bir sevda ki uğruna canlar verilmiş,<br>
+            Bir cennet ki adına vatan denilmiş.<br>
+            Unvanın Mehmetçik diye bilinmiş,<br>
+            Gururla taşıdığın bu unvan senindir.
+
+        </div>
+
+
+        <div class="stanza">
+
+            Büyük bir iman vermiş Yüce Rabbi,<br>
+            Yoldaştır ona Rahmet Peygamberi.<br>
+            Erlerin gönlünde yatar şehitlik mertebesi,<br>
+            Mevla'dan gelen bu şeref senindir.
+
+        </div>
+
+
+        <div class="stanza">
+
+            Ey Nazlı Hilal! Ey Nazlı Hilal!<br><br>
+
+            Dalgalan şanınla, mavi gökler senindir.<br>
+            Gölgenin vurduğu her yer,<br>
+            Elbette ki bizlere vatan yeridir.
+
+        </div>
+
+    </div>
+
+
+    <!-- BEĞENİ VE YORUMLAR -->
+
+    <div class="comments-section">
+
+        <button id="likeButton">
+
+            ❤️ Beğen
+            <span id="likeCount">0</span>
+
+        </button>
+
+        <div id="likeMessage"></div>
+
+
+        <h3>💬 Yorumlar</h3>
+
+
+        <form id="commentForm">
+
+            <input
+                type="text"
+                id="authorName"
+                placeholder="Adınız veya rumuzunuz"
+                maxlength="50"
+                required
+            >
+
+
+            <textarea
+                id="commentText"
+                placeholder="Yorumunuzu yazın..."
+                maxlength="500"
+                required
+            ></textarea>
+
+
+            <button type="submit">
+                Yorum Gönder
+            </button>
+
+        </form>
+
+
+        <div id="commentMessage"></div>
+
+
+        <div id="commentsList">
+
+            <p>Yorumlar yükleniyor...</p>
+
+        </div>
+
+    </div>
+
+
+    <a href="index.html" class="back-button">
+        ← Ana Sayfaya Dön
+    </a>
 
 </div>
 
@@ -505,6 +520,10 @@ const bannedWords = [
 ];
 
 
+/* =========================
+   METİN NORMALLEŞTİRME
+========================= */
+
 function normalizeText(text) {
 
     return text
@@ -515,6 +534,10 @@ function normalizeText(text) {
 
 }
 
+
+/* =========================
+   YASAKLI KELİME KONTROLÜ
+========================= */
 
 function containsBannedContent(text) {
 
@@ -701,6 +724,8 @@ document
             }
 
 
+            /* YASAKLI KELİME KONTROLÜ */
+
             if (
                 containsBannedContent(authorName) ||
                 containsBannedContent(commentText)
@@ -755,7 +780,7 @@ document
                 .reset();
 
 
-            loadComments();
+            await loadComments();
 
         }
     );
@@ -880,7 +905,9 @@ document
     );
 
 
-/* SAYFA AÇILINCA */
+/* =========================
+   SAYFA AÇILINCA
+========================= */
 
 loadComments();
 
