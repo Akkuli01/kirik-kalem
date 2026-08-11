@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <title>Bir Garip Aşık | Kırık Kalem</title>
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -101,6 +103,132 @@
             margin-bottom: 0;
         }
 
+
+        /* =========================
+           YORUM VE BEĞENİ
+        ========================= */
+
+        .comments-section {
+            max-width: 800px;
+            margin: 40px auto 0;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .comments-section h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+
+        /* BEĞENİ */
+
+        #likeButton {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #8b3a3a;
+            color: white;
+            cursor: pointer;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        #likeButton:hover {
+            background: #a64a4a;
+        }
+
+        #likeButton:disabled {
+            opacity: 0.7;
+            cursor: default;
+        }
+
+        #likeMessage,
+        #commentMessage {
+            margin: 15px 0;
+            font-size: 15px;
+        }
+
+
+        /* YORUM FORMU */
+
+        #commentForm {
+            margin-top: 10px;
+        }
+
+        #commentForm input,
+        #commentForm textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #d6cec5;
+            border-radius: 6px;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            outline: none;
+        }
+
+        #commentForm input:focus,
+        #commentForm textarea:focus {
+            border-color: #8a6f55;
+        }
+
+        #commentForm textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        #commentForm button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #332c27;
+            color: white;
+            cursor: pointer;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        #commentForm button:hover {
+            background: #57483d;
+        }
+
+        #commentForm button:disabled {
+            opacity: 0.7;
+            cursor: default;
+        }
+
+
+        /* YORUMLAR */
+
+        .comment {
+            border-top: 1px solid #e5ddd5;
+            padding: 20px 0;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .comment-date {
+            color: #8b7c70;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .comment-text {
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+
+        /* GERİ DÖN */
+
         .back-button {
             display: block;
             width: fit-content;
@@ -116,6 +244,9 @@
             background: #57483d;
         }
 
+
+        /* FOOTER */
+
         footer {
             background: #211d1a;
             color: #cfc3b8;
@@ -123,6 +254,9 @@
             padding: 25px;
             margin-top: 70px;
         }
+
+
+        /* TELEFON */
 
         @media (max-width: 600px) {
 
@@ -144,11 +278,29 @@
                 margin: 4px 6px;
                 font-size: 14px;
             }
+
+            .comments-section {
+                margin-left: 15px;
+                margin-right: 15px;
+                padding: 20px;
+            }
+
+            .comments-section h3 {
+                font-size: 24px;
+            }
         }
+
     </style>
+
 </head>
 
+
 <body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
@@ -159,7 +311,9 @@
 </header>
 
 
-<!-- MENÜ -->
+<!-- =========================
+     MENÜ
+========================= -->
 
 <nav>
 
@@ -190,6 +344,10 @@
 </nav>
 
 
+<!-- =========================
+     ŞİİR
+========================= -->
+
 <main class="poem-container">
 
     <div class="poem-title">
@@ -209,6 +367,7 @@
 
 
     <div class="poem">
+
 
         <div class="stanza">
 
@@ -269,21 +428,641 @@
 
         </div>
 
+
     </div>
 
 
-    <a href="index.html" class="back-button">
+    <!-- =========================
+         BEĞENİ VE YORUMLAR
+    ========================= -->
+
+    <div class="comments-section">
+
+
+        <!-- BEĞENİ -->
+
+        <button id="likeButton">
+
+            ❤️ Beğen
+            <span id="likeCount">0</span>
+
+        </button>
+
+
+        <div id="likeMessage"></div>
+
+
+        <!-- YORUMLAR -->
+
+        <h3>
+            💬 Yorumlar
+        </h3>
+
+
+        <form id="commentForm">
+
+
+            <input
+                type="text"
+                id="authorName"
+                placeholder="Adınız veya rumuzunuz"
+                maxlength="50"
+                required
+            >
+
+
+            <textarea
+                id="commentText"
+                placeholder="Yorumunuzu yazın..."
+                maxlength="500"
+                required
+            ></textarea>
+
+
+            <button
+                type="submit"
+                id="commentSubmitButton"
+            >
+                Yorum Gönder
+            </button>
+
+
+        </form>
+
+
+        <div id="commentMessage"></div>
+
+
+        <div id="commentsList">
+
+            <p>
+                Yorumlar yükleniyor...
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- GERİ DÖN -->
+
+    <a
+        href="index.html"
+        class="back-button"
+    >
         ← Ana Sayfaya Dön
     </a>
 
+
 </main>
 
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
     © 2026 Kırık Kalem - Akkuli
 
 </footer>
+
+
+<!-- =========================
+     SUPABASE
+========================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+
+/* =========================
+   SUPABASE AYARLARI
+========================= */
+
+const SUPABASE_URL =
+    "https://idaxxculusfumyknwgid.supabase.co";
+
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_mSQ2DEn9KsMcdPDVq9FpDA_SsnPoF_d";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+/* =========================
+   BU ŞİİRİN ID'Sİ
+========================= */
+
+const poemId =
+    "bir-garip-asik";
+
+
+/* =========================
+   YASAKLI KELİMELER
+========================= */
+
+const bannedWords = [
+
+    "mal",
+    "amk",
+    "aq",
+    "orospu",
+    "piç",
+    "siktir",
+    "sikik",
+    "yarrak",
+    "ibne",
+    "göt",
+    "salak",
+    "aptal",
+    "gerizekalı",
+    "şerefsiz",
+    "haysiyetsiz",
+    "oe",
+    "orospu çocuğu"
+
+];
+
+
+/* =========================
+   METİN NORMALLEŞTİRME
+========================= */
+
+function normalizeText(text) {
+
+    return text
+        .toLocaleLowerCase("tr-TR")
+        .replace(/[^a-zçğıöşü0-9\s]/gi, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+}
+
+
+/* =========================
+   YASAKLI KELİME KONTROLÜ
+========================= */
+
+function containsBannedContent(text) {
+
+    const normalized =
+        normalizeText(text);
+
+    const words =
+        normalized.split(" ");
+
+
+    return bannedWords.some(function(word) {
+
+        const normalizedBannedWord =
+            normalizeText(word);
+
+        /*
+         * Tek kelimelik yasaklı kelimeler
+         */
+
+        if (
+            !normalizedBannedWord.includes(" ")
+        ) {
+
+            return words.includes(
+                normalizedBannedWord
+            );
+
+        }
+
+
+        /*
+         * Birden fazla kelimeden oluşan
+         * yasaklı ifadeler
+         */
+
+        return normalized.includes(
+            normalizedBannedWord
+        );
+
+    });
+
+}
+
+
+/* =========================
+   YORUMLARI GETİR
+========================= */
+
+async function loadComments() {
+
+    const commentsList =
+        document.getElementById(
+            "commentsList"
+        );
+
+
+    const result =
+        await supabaseClient
+            .from("comments")
+            .select(
+                "author_name, content, created_at"
+            )
+            .eq(
+                "poem_id",
+                poemId
+            )
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            );
+
+
+    if (result.error) {
+
+        console.error(
+            "Supabase yorum hatası:",
+            result.error
+        );
+
+        commentsList.innerHTML =
+            "<p>Yorumlar yüklenirken bir hata oluştu.</p>";
+
+        return;
+
+    }
+
+
+    const data =
+        result.data;
+
+
+    if (!data || data.length === 0) {
+
+        commentsList.innerHTML =
+            "<p>Henüz yorum yapılmamış. İlk yorumu sen yap! ✍️</p>";
+
+        return;
+
+    }
+
+
+    commentsList.innerHTML = "";
+
+
+    data.forEach(function(comment) {
+
+        const commentElement =
+            document.createElement("div");
+
+        commentElement.className =
+            "comment";
+
+
+        const author =
+            document.createElement("div");
+
+        author.className =
+            "comment-author";
+
+        author.textContent =
+            comment.author_name;
+
+
+        const date =
+            document.createElement("div");
+
+        date.className =
+            "comment-date";
+
+        date.textContent =
+            new Date(
+                comment.created_at
+            ).toLocaleString("tr-TR");
+
+
+        const text =
+            document.createElement("div");
+
+        text.className =
+            "comment-text";
+
+        text.textContent =
+            comment.content;
+
+
+        commentElement.appendChild(
+            author
+        );
+
+        commentElement.appendChild(
+            date
+        );
+
+        commentElement.appendChild(
+            text
+        );
+
+
+        commentsList.appendChild(
+            commentElement
+        );
+
+    });
+
+}
+
+
+/* =========================
+   YORUM GÖNDER
+========================= */
+
+document
+    .getElementById("commentForm")
+    .addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const authorName =
+                document
+                    .getElementById(
+                        "authorName"
+                    )
+                    .value
+                    .trim();
+
+
+            const commentText =
+                document
+                    .getElementById(
+                        "commentText"
+                    )
+                    .value
+                    .trim();
+
+
+            const message =
+                document.getElementById(
+                    "commentMessage"
+                );
+
+
+            const submitButton =
+                document.getElementById(
+                    "commentSubmitButton"
+                );
+
+
+            /* BOŞ KONTROLÜ */
+
+            if (
+                !authorName ||
+                !commentText
+            ) {
+
+                message.textContent =
+                    "Lütfen adınızı ve yorumunuzu yazın.";
+
+                return;
+
+            }
+
+
+            /* YASAKLI KELİME KONTROLÜ */
+
+            if (
+                containsBannedContent(
+                    authorName
+                ) ||
+                containsBannedContent(
+                    commentText
+                )
+            ) {
+
+                message.textContent =
+                    "Yorumunuz topluluk kurallarımıza uygun değil.";
+
+                return;
+
+            }
+
+
+            /* GÖNDERME SIRASINDA BUTONU KİLİTLE */
+
+            submitButton.disabled = true;
+
+            submitButton.textContent =
+                "Gönderiliyor...";
+
+
+            /* SUPABASE'E GÖNDER */
+
+            const result =
+                await supabaseClient
+                    .from("comments")
+                    .insert({
+
+                        author_name:
+                            authorName,
+
+                        content:
+                            commentText,
+
+                        poem_id:
+                            poemId
+
+                    });
+
+
+            if (result.error) {
+
+                console.error(
+                    "Yorum gönderme hatası:",
+                    result.error
+                );
+
+                message.textContent =
+                    "Yorum gönderilemedi. Lütfen tekrar deneyin.";
+
+                submitButton.disabled =
+                    false;
+
+                submitButton.textContent =
+                    "Yorum Gönder";
+
+                return;
+
+            }
+
+
+            /* BAŞARILI */
+
+            message.textContent =
+                "Yorumunuz yayınlandı! ❤️";
+
+
+            document
+                .getElementById(
+                    "commentForm"
+                )
+                .reset();
+
+
+            submitButton.disabled =
+                false;
+
+            submitButton.textContent =
+                "Yorum Gönder";
+
+
+            await loadComments();
+
+        }
+    );
+
+
+/* =========================
+   BEĞENİLERİ GETİR
+========================= */
+
+async function loadLikes() {
+
+    const likeCount =
+        document.getElementById(
+            "likeCount"
+        );
+
+
+    const result =
+        await supabaseClient
+            .from("likes")
+            .select(
+                "id",
+                {
+                    count: "exact",
+                    head: true
+                }
+            )
+            .eq(
+                "poem_id",
+                poemId
+            );
+
+
+    if (result.error) {
+
+        console.error(
+            "Beğeni hatası:",
+            result.error
+        );
+
+        return;
+
+    }
+
+
+    likeCount.textContent =
+        result.count || 0;
+
+}
+
+
+/* =========================
+   BEĞENİ GÖNDER
+========================= */
+
+document
+    .getElementById("likeButton")
+    .addEventListener(
+        "click",
+        async function() {
+
+            const button =
+                document.getElementById(
+                    "likeButton"
+                );
+
+
+            const message =
+                document.getElementById(
+                    "likeMessage"
+                );
+
+
+            button.disabled =
+                true;
+
+
+            const result =
+                await supabaseClient
+                    .from("likes")
+                    .insert({
+
+                        poem_id:
+                            poemId
+
+                    });
+
+
+            if (result.error) {
+
+                console.error(
+                    "Beğeni gönderme hatası:",
+                    result.error
+                );
+
+                message.textContent =
+                    "Beğeni gönderilemedi.";
+
+                button.disabled =
+                    false;
+
+                return;
+
+            }
+
+
+            message.textContent =
+                "Beğendiğin için teşekkürler! ❤️";
+
+
+            await loadLikes();
+
+
+            setTimeout(
+                function() {
+
+                    button.disabled =
+                        false;
+
+                },
+                1000
+            );
+
+        }
+    );
+
+
+/* =========================
+   SAYFA AÇILINCA
+========================= */
+
+loadComments();
+
+loadLikes();
+
+</script>
+
 
 </body>
 </html>
